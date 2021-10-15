@@ -3,9 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/AndroidProjects/PokeApp/app/src/main/res/layout/activity_buscar_pokemon.xml" value="0.25" />
-        <entry key="..\:/AndroidProjects/PokeApp/app/src/main/res/layout/activity_main.xml" value="0.20520833333333333" />
-        <entry key="..\:/AndroidProjects/PokeApp/app/src/main/res/layout/item_pokemon.xml" value="0.18048780487804877" />
+        <entry key="..\:/AndroidProjects/PokeApp/app/src/main/res/layout/activity_main.xml" value="0.29030797101449274" />
       </map>
     </option>
   </component>
