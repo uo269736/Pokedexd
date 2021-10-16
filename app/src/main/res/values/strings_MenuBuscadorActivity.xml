@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="btnTipos">Tipos</string>
+    <string name="btnAtaques">Ataques</string>
+    <string name="btnObjetos">Objetos</string>
+    <string name="btnPokemon">Pokemon</string>
+
+
+</resources>

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".menus.MenuBuscadorActivity">
+
+    <Button
+        android:id="@+id/BuscadorBtnAtaques"
+        android:layout_width="228dp"
+        android:layout_height="66dp"
+        android:layout_marginBottom="44dp"
+        android:text="@string/btnAtaques"
+        app:layout_constraintBottom_toTopOf="@+id/BuscadorBtnObjetos"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/BuscadorBtnObjetos"
+        android:layout_width="228dp"
+        android:layout_height="66dp"
+        android:layout_marginBottom="180dp"
+        android:text="@string/btnObjetos"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/BuscadorBtnTipos"
+        android:layout_width="228dp"
+        android:layout_height="66dp"
+        android:layout_marginBottom="44dp"
+        android:text="@string/btnTipos"
+        app:layout_constraintBottom_toTopOf="@+id/BuscadorBtnAtaques"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/BuscadorBtnPokemon"
+        android:layout_width="228dp"
+        android:layout_height="66dp"
+        android:layout_marginBottom="44dp"
+        android:text="@string/btnPokemon"
+        app:layout_constraintBottom_toTopOf="@+id/BuscadorBtnTipos"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
