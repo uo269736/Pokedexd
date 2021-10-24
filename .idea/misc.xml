@@ -3,6 +3,13 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/AndroidProjects/PokeApp/app/src/main/res/layout/activity_buscar_habilidad.xml" value="0.36666666666666664" />
+        <entry key="..\:/AndroidProjects/PokeApp/app/src/main/res/layout/activity_buscar_objetos.xml" value="0.20260416666666667" />
+        <entry key="..\:/AndroidProjects/PokeApp/app/src/main/res/layout/activity_buscar_pokemon.xml" value="0.36666666666666664" />
+        <entry key="..\:/AndroidProjects/PokeApp/app/src/main/res/layout/activity_menu_buscador.xml" value="0.36666666666666664" />
+        <entry key="..\:/AndroidProjects/PokeApp/app/src/main/res/layout/item_habilidad.xml" value="0.36666666666666664" />
+        <entry key="..\:/AndroidProjects/PokeApp/app/src/main/res/layout/item_objeto.xml" value="0.21666666666666667" />
+        <entry key="..\:/AndroidProjects/PokeApp/app/src/main/res/layout/item_pokemon.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Sergio/Pokedexd/app/src/main/res/layout/activity_buscar_pokemon.xml" value="0.2265625" />
         <entry key="..\:/Users/Sergio/Pokedexd/app/src/main/res/layout/activity_menu_buscador.xml" value="0.25" />
         <entry key="..\:/Users/Sergio/Pokedexd/app/src/main/res/layout/activity_pantalla_inicial.xml" value="0.25" />

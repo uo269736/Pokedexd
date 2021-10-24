@@ -17,7 +17,7 @@ public class PokemonRespuestaIndividual {
     public void setName(String name) {
         this.name = name;
     }
-    public void setOrder(int order) {
-        this.id = order;
+    public void setId(int id) {
+        this.id = id;
     }
 }

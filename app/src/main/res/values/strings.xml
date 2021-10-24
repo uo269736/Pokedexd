@@ -1,3 +1,8 @@
 <resources>
 
+    <string name="IntroduceNombreHabilidad">Introduce el nombre de la habilidad:</string>
+    <string name="NombreHabilidad">Nombre de la habilidad</string>
+    <string name="btnHabilidades">Habilidades</string>
+    <string name="IntroduceNombreObjeto">Introduce el nombre del objeto</string>
+    <string name="NombreObjeto">Nombre del Objeto</string>
 </resources>

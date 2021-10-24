@@ -1,5 +1,9 @@
 package pokeapi;
 
+import models.HabilidadRespuesta;
+import models.HabilidadRespuestaIndividual;
+import models.ObjetoRespuesta;
+import models.ObjetoRespuestaIndividual;
 import models.PokemonRespuesta;
 import models.PokemonRespuestaIndividual;
 import retrofit2.Call;
@@ -14,4 +18,16 @@ public interface PokeapiService {
 
     @GET("pokemon/{name}")
     Call<PokemonRespuestaIndividual> obtenerPokemon(@Path("name") String nombre);
+
+    @GET("ability")
+    Call<HabilidadRespuesta> obtenerListaHabilidades(@Query("limit") int limit, @Query("offset")int offset);
+
+    @GET("ability/{name}")
+    Call<HabilidadRespuestaIndividual> obtenerHabilidad(@Path("name") String nombre);
+
+    @GET("item")
+    Call<ObjetoRespuesta> obtenerListaObjetos(@Query("limit") int limit, @Query("offset")int offset);
+
+    @GET("item/{name}")
+    Call<ObjetoRespuestaIndividual> obtenerObjeto(@Path("name") String nombre);
 }

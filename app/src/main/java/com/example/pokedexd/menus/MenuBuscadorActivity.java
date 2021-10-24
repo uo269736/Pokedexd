@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import com.example.pokedexd.BuscarHabilidadActivity;
+import com.example.pokedexd.BuscarObjetosActivity;
 import com.example.pokedexd.BuscarPokemonActivity;
 import com.example.pokedexd.R;
 
@@ -16,6 +18,7 @@ public class MenuBuscadorActivity extends AppCompatActivity {
     private Button btnMenuBuscadorTipos;
     private Button btnMenuBuscadorObjetos;
     private Button btnMenuBuscadorAtaques;
+    private Button btnMenuBuscadorHabilidades;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,12 +29,31 @@ public class MenuBuscadorActivity extends AppCompatActivity {
         btnMenuBuscadorTipos = (Button) findViewById(R.id.BuscadorBtnTipos);
         btnMenuBuscadorObjetos = (Button) findViewById(R.id.BuscadorBtnObjetos);
         btnMenuBuscadorAtaques = (Button) findViewById(R.id.BuscadorBtnAtaques);
+        btnMenuBuscadorHabilidades = (Button) findViewById(R.id.BuscadorBtnHabilidades);
 
         //Pasar a las respectivas pantallas al clickar el boton.
         btnMenuBuscadorPokemon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MenuBuscadorActivity.this, BuscarPokemonActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        //Pasar a las respectivas pantallas al clickar el boton.
+        btnMenuBuscadorHabilidades.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MenuBuscadorActivity.this, BuscarHabilidadActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        //Pasar a las respectivas pantallas al clickar el boton.
+        btnMenuBuscadorObjetos.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MenuBuscadorActivity.this, BuscarObjetosActivity.class);
                 startActivity(intent);
             }
         });

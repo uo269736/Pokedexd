@@ -27,7 +27,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class BuscarPokemonActivity extends AppCompatActivity {
 
-    private static final String TAG="POKEDEX";
+    private static final String TAG="BUSCARPOKEMON";
 
     private Retrofit retrofit;
     private RecyclerView recyclerView;
