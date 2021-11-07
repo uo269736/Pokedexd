@@ -3,18 +3,25 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/AndroidProjects/PokeApp/app/src/main/res/layout/activity_buscar_habilidad.xml" value="0.36666666666666664" />
-        <entry key="..\:/AndroidProjects/PokeApp/app/src/main/res/layout/activity_buscar_objetos.xml" value="0.20260416666666667" />
-        <entry key="..\:/AndroidProjects/PokeApp/app/src/main/res/layout/activity_buscar_pokemon.xml" value="0.36666666666666664" />
-        <entry key="..\:/AndroidProjects/PokeApp/app/src/main/res/layout/activity_menu_buscador.xml" value="0.36666666666666664" />
-        <entry key="..\:/AndroidProjects/PokeApp/app/src/main/res/layout/item_habilidad.xml" value="0.36666666666666664" />
-        <entry key="..\:/AndroidProjects/PokeApp/app/src/main/res/layout/item_objeto.xml" value="0.21666666666666667" />
-        <entry key="..\:/AndroidProjects/PokeApp/app/src/main/res/layout/item_pokemon.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Sergio/Pokedexd/app/src/main/res/layout/activity_buscar_pokemon.xml" value="0.2265625" />
         <entry key="..\:/Users/Sergio/Pokedexd/app/src/main/res/layout/activity_menu_buscador.xml" value="0.25" />
         <entry key="..\:/Users/Sergio/Pokedexd/app/src/main/res/layout/activity_pantalla_inicial.xml" value="0.25" />
         <entry key="..\:/Users/Sergio/Pokedexd/app/src/main/res/layout/item_pokemon.xml" value="0.2265625" />
         <entry key="..\:/Users/Sergio/Pokedexd/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.22135416666666666" />
+        <entry key="..\:/Users/danif/AndroidStudioProjects/Pokedexd/app/src/main/res/layout/activity_buscar_habilidad.xml" value="0.15416666666666667" />
+        <entry key="..\:/Users/danif/AndroidStudioProjects/Pokedexd/app/src/main/res/layout/activity_buscar_objetos.xml" value="0.20104166666666667" />
+        <entry key="..\:/Users/danif/AndroidStudioProjects/Pokedexd/app/src/main/res/layout/activity_buscar_pokemon.xml" value="0.23641304347826086" />
+        <entry key="..\:/Users/danif/AndroidStudioProjects/Pokedexd/app/src/main/res/layout/activity_menu_buscador.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/danif/AndroidStudioProjects/Pokedexd/app/src/main/res/layout/activity_menu_principal.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/danif/AndroidStudioProjects/Pokedexd/app/src/main/res/layout/activity_tipos.xml" value="0.23641304347826086" />
+        <entry key="..\:/Users/danif/AndroidStudioProjects/Pokedexd/app/src/main/res/layout/fragment_debil.xml" value="0.13020833333333334" />
+        <entry key="..\:/Users/danif/AndroidStudioProjects/Pokedexd/app/src/main/res/layout/fragment_tipos.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/danif/AndroidStudioProjects/Pokedexd/app/src/main/res/layout/item_habilidad.xml" value="0.13020833333333334" />
+        <entry key="..\:/Users/danif/AndroidStudioProjects/Pokedexd/app/src/main/res/layout/item_objeto.xml" value="0.20104166666666667" />
+        <entry key="..\:/Users/danif/AndroidStudioProjects/Pokedexd/app/src/main/res/layout/item_pokemon.xml" value="0.1286231884057971" />
+        <entry key="..\:/Users/danif/AndroidStudioProjects/Pokedexd/app/src/main/res/layout/item_tipo.xml" value="0.1712962962962963" />
+        <entry key="..\:/Users/danif/AndroidStudioProjects/Pokedexd/app/src/main/res/menu/menu.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/danif/AndroidStudioProjects/Pokedexd/app/src/main/res/menu/menu_tipos.xml" value="0.25416666666666665" />
       </map>
     </option>
   </component>

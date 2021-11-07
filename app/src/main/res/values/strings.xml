@@ -5,4 +5,13 @@
     <string name="btnHabilidades">Habilidades</string>
     <string name="IntroduceNombreObjeto">Introduce el nombre del objeto</string>
     <string name="NombreObjeto">Nombre del Objeto</string>
+    <string name="Compartir">Compartir</string>
+
+
+    <!-- botones pa cambiar de fragment -->
+    <string name="btnTiposDebil">Débil</string>
+    <string name="btnTiposNormal">Normal</string>
+    <string name="btnTiposEficaz">Eficaz</string>
+    <string name="btnTiposInmune">Inmune</string>
+
 </resources>

@@ -6,6 +6,8 @@ import models.ObjetoRespuesta;
 import models.ObjetoRespuestaIndividual;
 import models.PokemonRespuesta;
 import models.PokemonRespuestaIndividual;
+import models.TipoRespuesta;
+import models.TipoRespuestaIndividual;
 import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Path;
@@ -30,4 +32,10 @@ public interface PokeapiService {
 
     @GET("item/{name}")
     Call<ObjetoRespuestaIndividual> obtenerObjeto(@Path("name") String nombre);
+
+    @GET("type")
+    Call<TipoRespuesta> obtenerListaTipos(@Query("limit") int limit);
+
+    @GET("type/{name}")
+    Call<TipoRespuestaIndividual> obtenerDebilidades(@Path("name") String nombre);
 }

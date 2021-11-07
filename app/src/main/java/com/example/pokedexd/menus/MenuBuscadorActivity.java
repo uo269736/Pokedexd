@@ -10,6 +10,7 @@ import android.widget.Button;
 import com.example.pokedexd.BuscarHabilidadActivity;
 import com.example.pokedexd.BuscarObjetosActivity;
 import com.example.pokedexd.BuscarPokemonActivity;
+import com.example.pokedexd.BuscarTiposActivity;
 import com.example.pokedexd.R;
 
 public class MenuBuscadorActivity extends AppCompatActivity {
@@ -54,6 +55,15 @@ public class MenuBuscadorActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MenuBuscadorActivity.this, BuscarObjetosActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        //Pasar a las respectivas pantallas al clickar el boton.
+        btnMenuBuscadorTipos.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MenuBuscadorActivity.this, BuscarTiposActivity.class);
                 startActivity(intent);
             }
         });
