@@ -3,4 +3,5 @@
     <string name="btnBuscador">Buscador</string>
     <string name="btnEquipos">Crear equipo</string>
     <string name="btnLiga">Crear Liga</string>
+    <string name="btnInicioSesion">Iniciar sesión</string>
 </resources>
