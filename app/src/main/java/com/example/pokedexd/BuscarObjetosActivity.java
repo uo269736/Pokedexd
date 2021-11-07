@@ -18,9 +18,6 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 
 import adapters.ListaObjetosAdapter;
-import models.Habilidad;
-import models.HabilidadRespuesta;
-import models.HabilidadRespuestaIndividual;
 import models.Objeto;
 import models.ObjetoRespuesta;
 import models.ObjetoRespuestaIndividual;
@@ -45,7 +42,7 @@ public class BuscarObjetosActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_buscar_objetos);
+        setContentView(R.layout.activity_buscar_objeto);
 
         recyclerView = (RecyclerView) findViewById(R.id.ObjetoRecLista);
         listaObjetosAdapter = new ListaObjetosAdapter(this);

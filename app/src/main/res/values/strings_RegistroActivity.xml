@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="editTextNombre">Nombre</string>
+    <string name="editTextEmail">Email</string>
+    <string name="editTextContraseña">Contraseña</string>
+    <string name="btnRegistrarse">Registrarse</string>
+</resources>
