@@ -18,7 +18,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-import models.Usuario;
+import models.database.Usuario;
 
 public class MenuPrincipalSesionIniciadaActivity extends AppCompatActivity {
 
