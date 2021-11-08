@@ -4,13 +4,17 @@ import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -18,8 +22,10 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 import adapters.ListaTiposAdapter;
+import models.Relacion;
 import models.Tipo;
 import models.TipoRespuestaIndividual;
 import pokeapi.PokeapiService;
@@ -39,7 +45,7 @@ public class TiposFragment extends Fragment {
     private Retrofit retrofit;
     private Context context;
     private String nombreTipo;
-    private String fortaleza;
+    private String ataque;
 
 
     public TiposFragment() {
@@ -49,7 +55,6 @@ public class TiposFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
     }
 
     @Override
@@ -59,29 +64,27 @@ public class TiposFragment extends Fragment {
         View root = inflater.inflate(R.layout.fragment_tipos, container, false);
         context = root.getContext();
         listaTiposAdapter = new ListaTiposAdapter(context);
-        recyclerView = root.findViewById(R.id.recycerTipos);
-
-        LinearLayoutManager layoutManager = new LinearLayoutManager(context);
-        recyclerView.setLayoutManager(layoutManager);
-        cargarLista();
+        recyclerView = root.findViewById(R.id.recycler_tipos);
         recyclerView.setAdapter(listaTiposAdapter);
-
-        return root;
-    }
-
-    public static TiposFragment newInstance(String nombreTipo, String fortaleza) {
-        TiposFragment fragment = new TiposFragment();
-        fragment.nombreTipo = nombreTipo;
-        fragment.fortaleza = fortaleza;
-        return fragment;
-    }
-
-    private void cargarLista() {
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new LinearLayoutManager(context));
+        BottomNavigationView navView = root.findViewById(R.id.nav_view_fragment);
+        navView.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
         retrofit = new Retrofit.Builder()
                 .baseUrl("https://pokeapi.co/api/v2/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
+        return root;
+    }
 
+    public static TiposFragment newInstance(String nombreTipo, String ataque) {
+        TiposFragment fragment = new TiposFragment();
+        fragment.nombreTipo = nombreTipo.toLowerCase();
+        fragment.ataque = ataque;
+        return fragment;
+    }
+
+    private void cargarLista(String fortaleza) {
         PokeapiService service = retrofit.create(PokeapiService.class);
 
         Call<TipoRespuestaIndividual> tipoRespuestaIndividualCall = service.obtenerDebilidades(nombreTipo);
@@ -91,20 +94,37 @@ public class TiposFragment extends Fragment {
                 if (response.isSuccessful()) {
                     TipoRespuestaIndividual tipoRespuestaIndividual = response.body();
                     List<String> mostrar = new ArrayList<>();
-                    switch (fortaleza) {
-                        case "debil":
-                            for (Tipo t : tipoRespuestaIndividual.getDamage_relations().getHalf_damage_to())
-                                mostrar.add("aay");
-                            break;
-                        case "eficaz":
-                            for (Tipo t : tipoRespuestaIndividual.getDamage_relations().getDouble_damage_to())
-                                mostrar.add(traducirTipoEspañol(t.getName()));
-                            break;
-                        case "inmune":
-                            for (Tipo t : tipoRespuestaIndividual.getDamage_relations().getNo_damage_to())
-                                mostrar.add(traducirTipoEspañol(t.getName()));
-                            break;
-                    }
+                    Relacion r = tipoRespuestaIndividual.getDamage_relations();
+                    if (ataque.equals(BuscarTiposActivity.INFLIGE))
+                        switch (fortaleza) {
+                            case "debil":
+                                for (Tipo t : r.getHalf_damage_to())
+                                    mostrar.add(traducirTipoEspañol(t.getName()));
+                                break;
+                            case "eficaz":
+                                for (Tipo t : r.getDouble_damage_to())
+                                    mostrar.add(traducirTipoEspañol(t.getName()));
+                                break;
+                            case "inmune":
+                                for (Tipo t : r.getNo_damage_to())
+                                    mostrar.add(traducirTipoEspañol(t.getName()));
+                                break;
+                        }
+                    if(ataque.equals(BuscarTiposActivity.RECIBE))
+                        switch (fortaleza) {
+                            case "debil":
+                                for (Tipo t : r.getHalf_damage_from())
+                                    mostrar.add(traducirTipoEspañol(t.getName()));
+                                break;
+                            case "eficaz":
+                                for (Tipo t : r.getDouble_damage_from())
+                                    mostrar.add(traducirTipoEspañol(t.getName()));
+                                break;
+                            case "inmune":
+                                for (Tipo t : r.getNo_damage_from())
+                                    mostrar.add(traducirTipoEspañol(t.getName()));
+                                break;
+                        }
                     listaTiposAdapter.removeListaTipos();
                     listaTiposAdapter.addListaTipos(mostrar);
                 }
@@ -130,7 +150,8 @@ public class TiposFragment extends Fragment {
             while ((line = bufferedReader.readLine()) != null) {
                 String[] datos = line.split(";");
                 if (datos != null) {
-                    if (datos[1].toLowerCase().equals(tipo.toLowerCase()) || datos[2].toLowerCase().equals(tipo.toLowerCase())) {
+                    if (datos[1].toLowerCase().equals(tipo.toLowerCase())
+                            || datos[2].toLowerCase().equals(tipo.toLowerCase())) {
                         return datos[2]; //es el nombre en español
                     }
                 }
@@ -149,6 +170,30 @@ public class TiposFragment extends Fragment {
         }
         return "";
     }
+
+
+    private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
+            = new BottomNavigationView.OnNavigationItemSelectedListener() {
+
+        @Override
+        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+            switch (item.getItemId()) {
+                case R.id.btx0:
+                    cargarLista("inmune");
+                    return true;
+
+                case R.id.btx2:
+                    cargarLista("eficaz");
+                    return true;
+
+                case R.id.btx12:
+                    cargarLista("debil");
+                    return true;
+                default:
+                    throw new IllegalStateException("Unexpected value: " + item.getItemId());
+            }
+        }
+    };
 
 
 }

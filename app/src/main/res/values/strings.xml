@@ -9,9 +9,10 @@
 
 
     <!-- botones pa cambiar de fragment -->
-    <string name="btnTiposDebil">Débil</string>
-    <string name="btnTiposNormal">Normal</string>
-    <string name="btnTiposEficaz">Eficaz</string>
-    <string name="btnTiposInmune">Inmune</string>
+    <string name="btInflige">Inflige</string>
+    <string name="btRecibe">Recibe</string>
+    <string name="btx2">x2</string>
+    <string name="btx12">x1/2</string>
+    <string name="btx0">x0</string>
 
 </resources>
