@@ -1,4 +1,4 @@
-package com.example.pokedexd;
+package com.example.pokedexd.equipos;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+
+import com.example.pokedexd.R;
 
 import java.util.ArrayList;
 

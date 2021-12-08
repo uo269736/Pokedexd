@@ -11,11 +11,9 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.pokedexd.CrearEquipoActivity;
+import com.example.pokedexd.equipos.CrearEquipoActivity;
 import com.example.pokedexd.R;
 import com.example.pokedexd.autenticacion.InicioSesionActivity;
-import com.example.pokedexd.autenticacion.RegistroActivity;
-import com.example.pokedexd.equipos.ActivityAux;
 import com.example.pokedexd.ligas.ActivityAuxLigas;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;

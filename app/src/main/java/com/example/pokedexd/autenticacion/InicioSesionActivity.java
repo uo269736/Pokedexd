@@ -71,18 +71,21 @@ public class InicioSesionActivity extends AppCompatActivity {
         password = editTextPassword.getText().toString();
         Log.d("d",email + password);
 
-        mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-            @Override
-            public void onComplete(@NonNull Task<AuthResult> task) {
-                if (task.isSuccessful()){
-                    Toast.makeText(InicioSesionActivity.this, "¡Bienvenido!", Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(InicioSesionActivity.this, MenuPrincipalActivity.class);
-                    startActivity(intent);
-                } else {
-                    Toast.makeText(InicioSesionActivity.this, "No se pudo iniciar sesión", Toast.LENGTH_SHORT).show();
+        if (!password.isEmpty() && !email.isEmpty()) {
+            mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                @Override
+                public void onComplete(@NonNull Task<AuthResult> task) {
+                    if (task.isSuccessful()) {
+                        Toast.makeText(InicioSesionActivity.this, "¡Bienvenido!", Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(InicioSesionActivity.this, MenuPrincipalActivity.class);
+                        startActivity(intent);
+                    } else {
+                        Toast.makeText(InicioSesionActivity.this, "No se pudo iniciar sesión", Toast.LENGTH_SHORT).show();
+                    }
                 }
-            }
-        });
+            });
+        } else
+            Toast.makeText(InicioSesionActivity.this, "No puede haber campos vacíos.", Toast.LENGTH_SHORT).show();
     }
 
 

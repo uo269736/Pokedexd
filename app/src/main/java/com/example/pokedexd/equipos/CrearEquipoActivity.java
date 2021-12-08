@@ -1,8 +1,9 @@
-package com.example.pokedexd;
+package com.example.pokedexd.equipos;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.ClipData;
@@ -16,6 +17,7 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 
 
+import com.example.pokedexd.R;
 import com.google.android.material.snackbar.Snackbar;
 
 import java.util.ArrayList;
@@ -66,6 +68,7 @@ public class CrearEquipoActivity extends AppCompatActivity {
         recyclerView.setHasFixedSize(true);
         GridLayoutManager layoutManager= new GridLayoutManager(this,1);
         recyclerView.setLayoutManager(layoutManager);
+        new ItemTouchHelper(itemTouchHelperCallback).attachToRecyclerView(recyclerView);
 
         retrofit= new Retrofit.Builder()
                 .baseUrl("https://pokeapi.co/api/v2/")
@@ -150,24 +153,27 @@ public class CrearEquipoActivity extends AppCompatActivity {
 
                 Snackbar.make(findViewById(R.id.CrearEquipo),nuevoPokemon.getName()+" ha sido añadido al equipo",Snackbar.LENGTH_SHORT).show();
                 btnAddPokemon.setEnabled(true);
-//            if(creandoCategoria){
-//                //añadimos categoria
-//                listaCategoria.add(categoriaAuxiliar);
-//                introListaSpinner(spinnerCategoria,listaCategoria);
-//            } else{
-//                //busca la categoria del mismo nombre en la lista y cambiamos la descripción
-//                for(Categoria c : listaCategoria){
-//                    if(c.getNombre().equals(categoriaAuxiliar.getNombre())){
-//                        c.setDescripcion(categoriaAuxiliar.getDescripcion());
-//                        Log.d("FavMovies.MainActivity","Modificada la descripcion de: "+
-//                                categoriaAuxiliar.getNombre());
-//                        break;
-//                    }
-//                }
             } else if (resultCode == RESULT_CANCELED) {
                 Log.d("CrearEquipoActivity", "Añadir pokemon cancelado");
             }
         }
+    }
+
+    ItemTouchHelper.SimpleCallback itemTouchHelperCallback = new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.RIGHT) {
+        @Override
+        public boolean onMove(RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder, RecyclerView.ViewHolder target) {
+            return false;
+        }
+
+        @Override
+        public void onSwiped(RecyclerView.ViewHolder viewHolder, int direction) {
+            eliminarPokemon(equipoPokemon.get(viewHolder.getAdapterPosition()));
+        }
+    };
+
+    private void eliminarPokemon(Pokemon pokemon){
+        equipoPokemon.remove(pokemon);
+        equipoAdapter.eliminarPokemon(pokemon);
     }
 
 }

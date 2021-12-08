@@ -75,6 +75,11 @@ public class EquipoPokemonAdapter extends RecyclerView.Adapter<EquipoPokemonAdap
         notifyDataSetChanged();
     }
 
+    public void eliminarPokemon(Pokemon p){
+        dataset.remove(p);
+        notifyDataSetChanged();
+    }
+
     public void addPokemon(ArrayList<Pokemon> listaPokemon){
         dataset=new ArrayList<>();
         dataset.addAll(listaPokemon);

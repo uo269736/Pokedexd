@@ -65,7 +65,7 @@ public class RegistroActivity extends AppCompatActivity {
                         Toast.makeText(RegistroActivity.this, "La contraseña debe de ser de 6 caracteres o más", Toast.LENGTH_SHORT).show();
                 }
                 else
-                    Toast.makeText(RegistroActivity.this, "No pueden haber campos vacíos.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(RegistroActivity.this, "No puede haber campos vacíos.", Toast.LENGTH_SHORT).show();
             }
         });
     }
