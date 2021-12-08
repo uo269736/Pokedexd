@@ -13,5 +13,25 @@
     <string name="btnTiposNormal">Normal</string>
     <string name="btnTiposEficaz">Eficaz</string>
     <string name="btnTiposInmune">Inmune</string>
+    <string name="BuscaPokemonAñade">Busca un pokemon y añadelo al equipo</string>
+    <string name="GuardarEquipo">Guardar</string>
+    <string name="ExportarEquipo">Exportar</string>
+    <string name="TextViewAtaques">Ataques</string>
+    <string name="TextViewHabilidad">Habilidad</string>
+    <string name="TextViewTipo">Tipo</string>
+    <string name="TextViewObjeto">Objeto</string>
+    <string name="ObjetoPokemon">Objeto</string>
+    <string name="HabilidadPokemon">Habilidad</string>
+    <string name="Ataque1Pokemon">Ataque 1</string>
+    <string name="Ataque2Pokemon">Ataque 2</string>
+    <string name="Ataque3Pokemon">Ataque 3</string>
+    <string name="Ataque4Pokemon">Ataque 4</string>
+    <string name="HbilidadPokemonTitulo">Habilidad del pokemon</string>
+    <string name="msg_nuevo_pokemon">ha sido añadido al equipo</string>
+    <string name="msg_fallo">Ha ocurrido un error</string>
+    <string name="msg_pokemon_no_encontrado">El pokemon no ha sido encontrado</string>
+    <string name="msg_equipo_completo">El equipo no puede tener más de 6 pokemon</string>
+    <string name="msg_objeto_no_encontrado">El objeto no ha sido encontrado</string>
+    <string name="msg_habilidad_no_encontrada">La habilidad no ha sido encontrada</string>
 
 </resources>

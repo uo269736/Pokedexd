@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import com.example.pokedexd.CrearEquipoActivity;
 import com.example.pokedexd.R;
 import com.example.pokedexd.autenticacion.RegistroActivity;
 
@@ -40,6 +41,14 @@ public class MenuPrincipalActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MenuPrincipalActivity.this, RegistroActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        btnMenuEquipo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MenuPrincipalActivity.this, CrearEquipoActivity.class);
                 startActivity(intent);
             }
         });

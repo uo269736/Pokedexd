@@ -11,6 +11,8 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
 
+import com.google.android.material.snackbar.Snackbar;
+
 import java.util.ArrayList;
 import java.util.Locale;
 
@@ -78,15 +80,16 @@ public class BuscarPokemonActivity extends AppCompatActivity {
                 EditText e= (EditText) findViewById(R.id.PokemonEtxBuscador);
                 String nombre= e.getText().toString();
 
-                if((nombre.isEmpty() && nombre.equals(" ") && nombre.trim().equals(""))){
+                if((nombre.isEmpty() || nombre.trim().equals(""))){
                     aptoParaCargar=true;
                     offset=0;
+                    listaPokemonAdapter.eliminarPokemon();
                     obtenerDatos(offset);
+                    Snackbar.make(findViewById(R.id.BuscarPokemon), R.string.msg_pokemon_no_encontrado, Snackbar.LENGTH_SHORT).show();
                 }
                 else{
                     buscarPokemon(nombre);
                 }
-
             }
         });
 
@@ -115,6 +118,7 @@ public class BuscarPokemonActivity extends AppCompatActivity {
                     listaPokemonAdapter.addListaPokemon(listaPokemon);
                 } else {
                     Log.e(TAG, "onResponse: " + response.errorBody());
+                    Snackbar.make(findViewById(R.id.BuscarPokemon), R.string.msg_pokemon_no_encontrado, Snackbar.LENGTH_SHORT).show();
                 }
             }
 
@@ -135,22 +139,15 @@ public class BuscarPokemonActivity extends AppCompatActivity {
             public void onResponse(Call<PokemonRespuestaIndividual> call, Response<PokemonRespuestaIndividual> response) {
                 aptoParaCargar =true;
                 if (response.isSuccessful()) {
-                    if(pokemon.equals("") || pokemon.isEmpty()){
-                        offset=0;
-                        aptoParaCargar=true;
-                        listaPokemonAdapter.eliminarPokemon();
-                        obtenerDatos(offset);
-                    }
-                    else{
                         PokemonRespuestaIndividual pokemonRespuestaIndividual = response.body();
                         if(pokemonRespuestaIndividual!=null) {
                             ArrayList<Pokemon> listaPokemon = new ArrayList<>();
                             listaPokemon.add(new Pokemon(pokemonRespuestaIndividual.getName(), "https://pokeapi.co/api/v2/pokemon/" + pokemonRespuestaIndividual.getId()));
                             listaPokemonAdapter.addPokemon(listaPokemon);
-                        }
                     }
                 } else {
                     Log.e(TAG, "onResponse: " + response.errorBody());
+                    Snackbar.make(findViewById(R.id.BuscarPokemon), R.string.msg_pokemon_no_encontrado, Snackbar.LENGTH_SHORT).show();
                 }
             }
 

@@ -11,6 +11,8 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
 
+import com.google.android.material.snackbar.Snackbar;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -18,9 +20,12 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 
 import adapters.ListaHabilidadesAdapter;
+import models.DescripcionH;
+import models.DescripcionO;
 import models.Habilidad;
 import models.HabilidadRespuesta;
 import models.HabilidadRespuestaIndividual;
+import models.Nombre;
 import pokeapi.PokeapiService;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -81,10 +86,12 @@ public class BuscarHabilidadActivity extends AppCompatActivity {
                 EditText e = (EditText) findViewById(R.id.HabilidadEtxBuscador);
                 String nombre = e.getText().toString();
 
-                if ((nombre.isEmpty() && nombre.equals(" ") && nombre.trim().equals(""))) {
+                if ((nombre.isEmpty() || nombre.trim().equals(""))) {
                     aptoParaCargar = true;
                     offset = 0;
+                    listaHabilidadesAdapter.eliminarHabilidades();
                     obtenerDatos(offset);
+                    Snackbar.make(findViewById(R.id.BuscarHabilidades), R.string.msg_habilidad_no_encontrada, Snackbar.LENGTH_SHORT).show();
                 } else {
                     buscarHabilidad(nombre);
                 }
@@ -118,6 +125,7 @@ public class BuscarHabilidadActivity extends AppCompatActivity {
                     }
                 } else {
                     Log.e(TAG, "onResponse: " + response.errorBody());
+                    Snackbar.make(findViewById(R.id.BuscarHabilidades), R.string.msg_habilidad_no_encontrada, Snackbar.LENGTH_SHORT).show();
                 }
             }
 
@@ -140,22 +148,22 @@ public class BuscarHabilidadActivity extends AppCompatActivity {
                 if (response.isSuccessful()) {
                     HabilidadRespuestaIndividual habilidadRespuestaIndividual = response.body();
                     if(habilidadRespuestaIndividual.getNames().size()>0 && habilidadRespuestaIndividual.getDescripciones().size()>0) {
-                        if (habilidadRespuestaIndividual.getNames().size() > 1)
-                            h.setNombre(habilidadRespuestaIndividual.getNames().get(5).getName());
-                        else
-                            h.setNombre(habilidadRespuestaIndividual.getNames().get(0).getName());
-                        if (h.getId() < 77)
-                            h.setDescripcion(habilidadRespuestaIndividual.getDescripciones().get(13).getFlavor_text());
-                        else if (h.getId() < 124)
-                            h.setDescripcion(habilidadRespuestaIndividual.getDescripciones().get(10).getFlavor_text());
-                        else if (h.getId() < 165)
-                            h.setDescripcion(habilidadRespuestaIndividual.getDescripciones().get(7).getFlavor_text());
-                        else if (h.getId() < 192)
-                            h.setDescripcion(habilidadRespuestaIndividual.getDescripciones().get(4).getFlavor_text());
-                        else if (h.getId() < 234)
-                            h.setDescripcion(habilidadRespuestaIndividual.getDescripciones().get(5).getFlavor_text());
-                        else
-                            h.setDescripcion(habilidadRespuestaIndividual.getDescripciones().get(0).getFlavor_text());
+                        for (Nombre n:habilidadRespuestaIndividual.getNames())
+                            if(n.getLanguage().getName().equals("es")) {
+                                h.setNombre(n.getName());
+                                break;
+                            }
+                        if(h.getNombre()==null){
+                            h.setNombre("Nombre no disponible en español");
+                        }
+                        for (DescripcionH d:habilidadRespuestaIndividual.getDescripciones())
+                            if(d.getLenguage().getName().equals("es")) {
+                                h.setDescripcion(d.getFlavor_text());
+                                break;
+                            }
+                        if(h.getDescripcion()==null){
+                            h.setDescripcion("Descripción no disponible en español");
+                        }
                         ArrayList<Habilidad> listaH = new ArrayList();
                         listaH.add(h);
                         if (opcion.equals("todos"))
@@ -165,6 +173,7 @@ public class BuscarHabilidadActivity extends AppCompatActivity {
                     }
                 } else {
                     Log.e(TAG, "onResponse: " + response.errorBody());
+                    Snackbar.make(findViewById(R.id.BuscarHabilidades), R.string.msg_habilidad_no_encontrada, Snackbar.LENGTH_SHORT).show();
                 }
             }
 
@@ -186,21 +195,14 @@ public class BuscarHabilidadActivity extends AppCompatActivity {
             public void onResponse(Call<HabilidadRespuestaIndividual> call, Response<HabilidadRespuestaIndividual> response) {
                 aptoParaCargar =true;
                 if (response.isSuccessful()) {
-                    if(habilidadNombre.equals("") || habilidadNombre.isEmpty()){
-                        offset=0;
-                        aptoParaCargar=true;
-                        listaHabilidadesAdapter.eliminarHabilidades();
-                        obtenerDatos(offset);
-                    }
-                    else{
-                        HabilidadRespuestaIndividual habilidadRespuestaIndividual = response.body();
-                        if(habilidadRespuestaIndividual!=null) {
-                            Habilidad h=new Habilidad(habilidadNombre, "https://pokeapi.co/api/v2/ability/"+habilidadRespuestaIndividual.getId());
-                            agregarDescripcionNombre(h,"uno");
-                        }
+                    HabilidadRespuestaIndividual habilidadRespuestaIndividual = response.body();
+                    if(habilidadRespuestaIndividual!=null) {
+                        Habilidad h=new Habilidad(habilidadNombre, "https://pokeapi.co/api/v2/ability/"+habilidadRespuestaIndividual.getId());
+                        agregarDescripcionNombre(h,"uno");
                     }
                 } else {
                     Log.e(TAG, "onResponse: " + response.errorBody());
+                    Snackbar.make(findViewById(R.id.BuscarHabilidades), R.string.msg_habilidad_no_encontrada, Snackbar.LENGTH_SHORT).show();
                 }
             }
 
@@ -231,6 +233,7 @@ public class BuscarHabilidadActivity extends AppCompatActivity {
                    }
                 }
             }
+            return nombreHabilidad;
         } catch (IOException e) {
             e.printStackTrace();
         } finally {
@@ -242,6 +245,6 @@ public class BuscarHabilidadActivity extends AppCompatActivity {
                 }
             }
         }
-        return "";
+        return nombreHabilidad;
     }
 }

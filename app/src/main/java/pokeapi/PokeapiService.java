@@ -38,4 +38,5 @@ public interface PokeapiService {
 
     @GET("type/{name}")
     Call<TipoRespuestaIndividual> obtenerDebilidades(@Path("name") String nombre);
+
 }
