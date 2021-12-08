@@ -15,25 +15,28 @@
         android:theme="@style/Theme.Pokedexd"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".AddPokemonEquipoActivity"
+            android:name=".ligas.ActivityAuxLigas"
             android:exported="true" />
         <activity
-            android:name=".CrearEquipoActivity"
+            android:name=".equipos.CrearEquipoActivity"
             android:exported="true" />
         <activity
-            android:name=".menus.MenuPrincipalSesionIniciadaActivity"
+            android:name=".equipos.AddPokemonEquipoActivity"
+            android:exported="true" />
+        <activity
+            android:name=".autenticacion.InicioSesionActivity"
             android:exported="true" />
         <activity
             android:name=".autenticacion.RegistroActivity"
             android:exported="true" />
         <activity
-            android:name=".BuscarObjetosActivity"
+            android:name=".buscadores.BuscarObjetosActivity"
             android:exported="true" />
         <activity
-            android:name=".BuscarHabilidadActivity"
+            android:name=".buscadores.BuscarHabilidadActivity"
             android:exported="true" />
         <activity
-            android:name=".BuscarTiposActivity"
+            android:name=".buscadores.BuscarTiposActivity"
             android:exported="true" />
         <activity
             android:name=".menus.MenuPrincipalActivity"
@@ -48,7 +51,7 @@
             android:name=".menus.MenuBuscadorActivity"
             android:exported="true" />
         <activity
-            android:name=".BuscarPokemonActivity"
+            android:name=".buscadores.BuscarPokemonActivity"
             android:exported="true" />
         <activity
             android:name=".MainActivity"

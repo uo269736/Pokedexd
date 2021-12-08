@@ -1,4 +1,4 @@
-package com.example.pokedexd;
+package com.example.pokedexd.buscadores;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -8,9 +8,10 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.pokedexd.R;
 
 import java.io.BufferedReader;
 import java.io.IOException;

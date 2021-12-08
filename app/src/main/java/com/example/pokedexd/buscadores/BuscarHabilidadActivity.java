@@ -1,4 +1,4 @@
-package com.example.pokedexd;
+package com.example.pokedexd.buscadores;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -13,18 +13,21 @@ import android.widget.ImageButton;
 
 import com.google.android.material.snackbar.Snackbar;
 
+import com.example.pokedexd.R;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 
-import adapters.ListaObjetosAdapter;
+import adapters.ListaHabilidadesAdapter;
+import models.DescripcionH;
 import models.DescripcionO;
+import models.Habilidad;
+import models.HabilidadRespuesta;
+import models.HabilidadRespuestaIndividual;
 import models.Nombre;
-import models.Objeto;
-import models.ObjetoRespuesta;
-import models.ObjetoRespuestaIndividual;
 import pokeapi.PokeapiService;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -32,25 +35,25 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class BuscarObjetosActivity extends AppCompatActivity {
+public class BuscarHabilidadActivity extends AppCompatActivity {
 
-    private static final String TAG="BUSCAROBJETOS";
+    private static final String TAG = "BUSCARHABILIDAD";
 
     private Retrofit retrofit;
     private RecyclerView recyclerView;
-    private ListaObjetosAdapter listaObjetosAdapter;
-    private int  offset;
+    private ListaHabilidadesAdapter listaHabilidadesAdapter;
+    private int offset;
     private boolean aptoParaCargar;
     private ImageButton botonBuscar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_buscar_objeto);
+        setContentView(R.layout.activity_buscar_habilidad);
 
-        recyclerView = (RecyclerView) findViewById(R.id.ObjetoRecLista);
-        listaObjetosAdapter = new ListaObjetosAdapter(this);
-        recyclerView.setAdapter(listaObjetosAdapter);
+        recyclerView = (RecyclerView) findViewById(R.id.HabilidadRecLista);
+        listaHabilidadesAdapter = new ListaHabilidadesAdapter(this);
+        recyclerView.setAdapter(listaHabilidadesAdapter);
         recyclerView.setHasFixedSize(true);
         GridLayoutManager layoutManager = new GridLayoutManager(this, 1);
         recyclerView.setLayoutManager(layoutManager);
@@ -78,21 +81,21 @@ public class BuscarObjetosActivity extends AppCompatActivity {
             }
         });
 
-        botonBuscar = (ImageButton) findViewById(R.id.ObjetoIbtBuscar);
+        botonBuscar = (ImageButton) findViewById(R.id.HabilidadIbtBuscar);
         botonBuscar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                EditText e = (EditText) findViewById(R.id.ObjetoEtxBuscador);
+                EditText e = (EditText) findViewById(R.id.HabilidadEtxBuscador);
                 String nombre = e.getText().toString();
 
                 if ((nombre.isEmpty() || nombre.trim().equals(""))) {
                     aptoParaCargar = true;
                     offset = 0;
-                    listaObjetosAdapter.eliminarObjetos();
+                    listaHabilidadesAdapter.eliminarHabilidades();
                     obtenerDatos(offset);
-                    Snackbar.make(findViewById(R.id.BuscarObjetos), R.string.msg_objeto_no_encontrado, Snackbar.LENGTH_SHORT).show();
+                    Snackbar.make(findViewById(R.id.BuscarHabilidades), R.string.msg_habilidad_no_encontrada, Snackbar.LENGTH_SHORT).show();
                 } else {
-                    buscarObjeto(nombre);
+                    buscarHabilidad(nombre);
                 }
 
             }
@@ -110,117 +113,116 @@ public class BuscarObjetosActivity extends AppCompatActivity {
 
     private void obtenerDatos(int offset) {
         PokeapiService service = retrofit.create(PokeapiService.class);
-        Call<ObjetoRespuesta> objetoRespuestaCall = service.obtenerListaObjetos(20, offset);
+        Call<HabilidadRespuesta> habilidadRespuestaCall = service.obtenerListaHabilidades(20, offset);
 
-        objetoRespuestaCall.enqueue(new Callback<ObjetoRespuesta>() {
+        habilidadRespuestaCall.enqueue(new Callback<HabilidadRespuesta>() {
             @Override
-            public void onResponse(Call<ObjetoRespuesta> call, Response<ObjetoRespuesta> response) {
+            public void onResponse(Call<HabilidadRespuesta> call, Response<HabilidadRespuesta> response) {
                 aptoParaCargar = true;
                 if (response.isSuccessful()) {
-                    ObjetoRespuesta objetoRespuesta = response.body();
-                    ArrayList<Objeto> listaObjetos = objetoRespuesta.getResults();
-                    for (Objeto o : listaObjetos) {
-                        agregarDescripcionNombre(o,"todos");
+                    HabilidadRespuesta habilidadRespuesta = response.body();
+                    ArrayList<Habilidad> listaHabilidades = habilidadRespuesta.getResults();
+                    for (Habilidad h : listaHabilidades) {
+                        agregarDescripcionNombre(h,"todos");
                     }
                 } else {
                     Log.e(TAG, "onResponse: " + response.errorBody());
-                    Snackbar.make(findViewById(R.id.BuscarObjetos), R.string.msg_objeto_no_encontrado, Snackbar.LENGTH_SHORT).show();
+                    Snackbar.make(findViewById(R.id.BuscarHabilidades), R.string.msg_habilidad_no_encontrada, Snackbar.LENGTH_SHORT).show();
                 }
             }
 
             @Override
-            public void onFailure(Call<ObjetoRespuesta> call, Throwable t) {
+            public void onFailure(Call<HabilidadRespuesta> call, Throwable t) {
                 aptoParaCargar = true;
                 Log.e(TAG, "onFailure: " + t.getMessage());
             }
         });
     }
 
-    private void agregarDescripcionNombre(Objeto o, String opcion){
+    private void agregarDescripcionNombre(Habilidad h, String opcion){
         PokeapiService service = retrofit.create(PokeapiService.class);
-        Call<ObjetoRespuestaIndividual> objetoRespuestaCall = service.obtenerObjeto(o.getName().toLowerCase().replace(" ","-"));
+        Call<HabilidadRespuestaIndividual> habilidadRespuestaCall = service.obtenerHabilidad(h.getName().toLowerCase().replace(" ","-"));
 
-        objetoRespuestaCall.enqueue(new Callback<ObjetoRespuestaIndividual>() {
+        habilidadRespuestaCall.enqueue(new Callback<HabilidadRespuestaIndividual>() {
             @Override
-            public void onResponse(Call<ObjetoRespuestaIndividual> call, Response<ObjetoRespuestaIndividual> response) {
+            public void onResponse(Call<HabilidadRespuestaIndividual> call, Response<HabilidadRespuestaIndividual> response) {
                 aptoParaCargar = true;
                 if (response.isSuccessful()) {
-                    ObjetoRespuestaIndividual objetoRespuestaIndividual = response.body();
-                    if(objetoRespuestaIndividual.getNames().size()>0 && objetoRespuestaIndividual.getDescripciones().size()>0) {
-                        for (Nombre n:objetoRespuestaIndividual.getNames())
+                    HabilidadRespuestaIndividual habilidadRespuestaIndividual = response.body();
+                    if(habilidadRespuestaIndividual.getNames().size()>0 && habilidadRespuestaIndividual.getDescripciones().size()>0) {
+                        for (Nombre n:habilidadRespuestaIndividual.getNames())
                             if(n.getLanguage().getName().equals("es")) {
-                                o.setNombre(n.getName());
+                                h.setNombre(n.getName());
                                 break;
                             }
-                        if(o.getNombre()==null){
-                            o.setNombre("Nombre no disponible en español");
+                        if(h.getNombre()==null){
+                            h.setNombre("Nombre no disponible en español");
                         }
-                        for (DescripcionO d:objetoRespuestaIndividual.getDescripciones())
+                        for (DescripcionH d:habilidadRespuestaIndividual.getDescripciones())
                             if(d.getLenguage().getName().equals("es")) {
-                                o.setDescripcion(d.getText());
+                                h.setDescripcion(d.getFlavor_text());
                                 break;
                             }
-                        if(o.getDescripcion()==null){
-                            o.setDescripcion("Descripción no disponible en español");
+                        if(h.getDescripcion()==null){
+                            h.setDescripcion("Descripción no disponible en español");
                         }
-                        ArrayList<Objeto> listaO = new ArrayList();
-                        listaO.add(o);
+                        ArrayList<Habilidad> listaH = new ArrayList();
+                        listaH.add(h);
                         if (opcion.equals("todos"))
-                            listaObjetosAdapter.addListaObjetos(listaO);
+                            listaHabilidadesAdapter.addListaHabilidades(listaH);
                         else if (opcion.equals("uno"))
-                            listaObjetosAdapter.addObjeto(listaO);
+                            listaHabilidadesAdapter.addHabilidad(listaH);
                     }
                 } else {
                     Log.e(TAG, "onResponse: " + response.errorBody());
-                    Snackbar.make(findViewById(R.id.BuscarObjetos), R.string.msg_objeto_no_encontrado, Snackbar.LENGTH_SHORT).show();
+                    Snackbar.make(findViewById(R.id.BuscarHabilidades), R.string.msg_habilidad_no_encontrada, Snackbar.LENGTH_SHORT).show();
                 }
             }
 
             @Override
-            public void onFailure(Call<ObjetoRespuestaIndividual> call, Throwable t) {
+            public void onFailure(Call<HabilidadRespuestaIndividual> call, Throwable t) {
                 aptoParaCargar = true;
                 Log.e(TAG, "onFailure: " + t.getMessage());
             }
         });
     }
 
-    private void buscarObjeto(String objeto) {
+    private void buscarHabilidad(String habilidad) {
         PokeapiService service = retrofit.create(PokeapiService.class);
-        String objetoNombre=encontrarNombre(objeto);
-        Call<ObjetoRespuestaIndividual> objetoRespuestaCall = service.obtenerObjeto(objetoNombre.toLowerCase().replace(" ","-"));
+        String habilidadNombre=encontrarNombre(habilidad);
+        Call<HabilidadRespuestaIndividual> habilidadRespuestaCall = service.obtenerHabilidad(habilidadNombre.toLowerCase().replace(" ","-"));
 
-        objetoRespuestaCall.enqueue(new Callback<ObjetoRespuestaIndividual>() {
+        habilidadRespuestaCall.enqueue(new Callback<HabilidadRespuestaIndividual>() {
             @Override
-            public void onResponse(Call<ObjetoRespuestaIndividual> call, Response<ObjetoRespuestaIndividual> response) {
+            public void onResponse(Call<HabilidadRespuestaIndividual> call, Response<HabilidadRespuestaIndividual> response) {
                 aptoParaCargar =true;
                 if (response.isSuccessful()) {
-                    ObjetoRespuestaIndividual objetoRespuestaIndividual = response.body();
-                    if(objetoRespuestaIndividual!=null) {
-                        System.out.println("https://pokeapi.co/api/v2/item/"+objetoRespuestaIndividual.getId());
-                        Objeto o=new Objeto(objetoNombre, "https://pokeapi.co/api/v2/item/"+objetoRespuestaIndividual.getId());
-                        agregarDescripcionNombre(o,"uno");
+                    HabilidadRespuestaIndividual habilidadRespuestaIndividual = response.body();
+                    if(habilidadRespuestaIndividual!=null) {
+                        Habilidad h=new Habilidad(habilidadNombre, "https://pokeapi.co/api/v2/ability/"+habilidadRespuestaIndividual.getId());
+                        agregarDescripcionNombre(h,"uno");
                     }
                 } else {
                     Log.e(TAG, "onResponse: " + response.errorBody());
-                    Snackbar.make(findViewById(R.id.BuscarObjetos), R.string.msg_objeto_no_encontrado, Snackbar.LENGTH_SHORT).show();
+                    Snackbar.make(findViewById(R.id.BuscarHabilidades), R.string.msg_habilidad_no_encontrada, Snackbar.LENGTH_SHORT).show();
                 }
             }
 
             @Override
-            public void onFailure(Call<ObjetoRespuestaIndividual> call, Throwable t) {
+            public void onFailure(Call<HabilidadRespuestaIndividual> call, Throwable t) {
                 aptoParaCargar =true;
                 Log.e(TAG, "onFailure: " + t.getMessage());
             }
         });
     }
 
-    protected String encontrarNombre(String nombreObjeto){
+    protected String encontrarNombre(String nombreHabilidad){
         InputStream file = null;
         InputStreamReader reader= null;
         BufferedReader bufferedReader = null;
 
         try{
-            file= getAssets().open("ObjetosPokemon.csv");
+            file= getAssets().open("HabilidadesPokemon.csv");
             reader = new InputStreamReader(file);
             bufferedReader= new BufferedReader(reader);
 
@@ -228,12 +230,12 @@ public class BuscarObjetosActivity extends AppCompatActivity {
             while((line= bufferedReader.readLine())!=null) {
                 String[] datos = line.split(";");
                 if(datos !=null){
-                    if(datos[0].toLowerCase().equals(nombreObjeto.toLowerCase()) || datos[1].toLowerCase().equals(nombreObjeto.toLowerCase())) {
-                        return datos[0];
-                    }
+                   if(datos[1].toLowerCase().equals(nombreHabilidad.toLowerCase()) || datos[2].toLowerCase().equals(nombreHabilidad.toLowerCase())) {
+                       return datos[0];
+                   }
                 }
             }
-            return nombreObjeto;
+            return nombreHabilidad;
         } catch (IOException e) {
             e.printStackTrace();
         } finally {
@@ -245,6 +247,6 @@ public class BuscarObjetosActivity extends AppCompatActivity {
                 }
             }
         }
-        return nombreObjeto;
+        return nombreHabilidad;
     }
 }
