@@ -1,4 +1,4 @@
-package com.example.pokedexd;
+package com.example.pokedexd.buscadores;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -10,6 +10,8 @@ import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
+
+import com.example.pokedexd.R;
 
 import java.io.BufferedReader;
 import java.io.IOException;

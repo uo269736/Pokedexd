@@ -3,7 +3,10 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Sergio/Pokedexd/app/src/main/res/layout/activity_aux.xml" value="0.19375" />
+        <entry key="..\:/Users/Sergio/Pokedexd/app/src/main/res/layout/activity_aux_ligas.xml" value="0.19375" />
         <entry key="..\:/Users/Sergio/Pokedexd/app/src/main/res/layout/activity_buscar_pokemon.xml" value="0.2265625" />
+        <entry key="..\:/Users/Sergio/Pokedexd/app/src/main/res/layout/activity_inicio_sesion.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Sergio/Pokedexd/app/src/main/res/layout/activity_menu_buscador.xml" value="0.25" />
         <entry key="..\:/Users/Sergio/Pokedexd/app/src/main/res/layout/activity_menu_principal.xml" value="0.3654891304347826" />
         <entry key="..\:/Users/Sergio/Pokedexd/app/src/main/res/layout/activity_menu_principal_sesion_iniciada.xml" value="0.36666666666666664" />

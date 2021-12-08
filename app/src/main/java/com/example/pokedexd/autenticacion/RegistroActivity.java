@@ -12,16 +12,13 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.pokedexd.R;
-import com.example.pokedexd.menus.MenuPrincipalSesionIniciadaActivity;
+import com.example.pokedexd.menus.MenuPrincipalActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -92,13 +89,12 @@ public class RegistroActivity extends AppCompatActivity {
                             if (task2.isSuccessful()) {
                                 Log.d("Registro", "signInWithEmail:success");
                                 Toast.makeText(RegistroActivity.this, "Registrado correctamente", Toast.LENGTH_SHORT).show();
-                                Intent intent = new Intent(RegistroActivity.this, MenuPrincipalSesionIniciadaActivity.class);
+                                Intent intent = new Intent(RegistroActivity.this, MenuPrincipalActivity.class);
                                 startActivity(intent);
                                 finish();
                             } else {
                                 Log.d("Registro", task2.getException().getMessage());
                                 Toast.makeText(RegistroActivity.this, "No se pudieron meter los datos correctamente", Toast.LENGTH_SHORT).show();
-
                             }
                         }
                     });
