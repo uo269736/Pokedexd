@@ -136,7 +136,7 @@ public class CrearEquipoActivity extends AppCompatActivity {
                 if (editTextNombreEquipo.getText().toString().isEmpty()) {
                     Snackbar.make(findViewById(R.id.CrearEquipoBtnGuardar), "Ponga un nombre al equipo", Snackbar.LENGTH_SHORT).show();
                 } else {
-                    if (equipoPokemon.size() == 1) {
+                    if (equipoPokemon.size() == 6) {
                     String id = mAuth.getCurrentUser().getUid();
 
                     Map<String, Object> map = new HashMap<>();
