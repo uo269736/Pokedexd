@@ -54,6 +54,9 @@
             android:name=".buscadores.BuscarPokemonActivity"
             android:exported="true" />
         <activity
+            android:name=".equipos.MisEquiposActivity"
+            android:exported="true" />
+        <activity
             android:name=".MainActivity"
             android:exported="true" />
     </application>

@@ -1,5 +1,6 @@
 package com.example.pokedexd.equipos;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
@@ -15,12 +16,20 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 
 import com.example.pokedexd.R;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.snackbar.Snackbar;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 import adapters.EquipoPokemonAdapter;
 import models.Pokemon;
@@ -39,6 +48,9 @@ public class CrearEquipoActivity extends AppCompatActivity {
 
     protected static final int AÑADIR_POKEMON = 1;
 
+    private FirebaseAuth mAuth;
+    private DatabaseReference mDatabase;
+
     private ImageButton btnAddPokemon;
     private Button btnGuardar;
     private Button btnExportar;
@@ -47,6 +59,7 @@ public class CrearEquipoActivity extends AppCompatActivity {
     private ArrayList<Pokemon> equipoPokemon;
     private RecyclerView recyclerView;
     private EquipoPokemonAdapter equipoAdapter;
+    private EditText editTextNombreEquipo;
 
     private int idPokemon;
 
@@ -55,6 +68,11 @@ public class CrearEquipoActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_crear_equipo);
 
+        FirebaseDatabase database = FirebaseDatabase.getInstance("https://pokedexd-a8a61-default-rtdb.europe-west1.firebasedatabase.app/");
+        mDatabase = database.getReference();
+
+        mAuth = FirebaseAuth.getInstance();
+
         equipoPokemon = new ArrayList<Pokemon>();
 
         btnAddPokemon = (ImageButton) findViewById(R.id.CrearEquipoIbtAñade);
@@ -62,6 +80,7 @@ public class CrearEquipoActivity extends AppCompatActivity {
         btnExportar = (Button) findViewById(R.id.CrearEquipoBtnExportar);
         nombrePokemon = (EditText) findViewById(R.id.CrearEquipoEtxBuscaPokemon);
         recyclerView = (RecyclerView) findViewById(R.id.CrearEquipoRecListaEquipo);
+        editTextNombreEquipo = (EditText) findViewById(R.id.editTextNombreEquipo);
 
         equipoAdapter = new EquipoPokemonAdapter(this);
         recyclerView.setAdapter(equipoAdapter);
@@ -110,12 +129,40 @@ public class CrearEquipoActivity extends AppCompatActivity {
 
         btnAddPokemon.setEnabled(true);
 
+
         btnGuardar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if (editTextNombreEquipo.getText().toString().isEmpty()) {
+                    Snackbar.make(findViewById(R.id.CrearEquipoBtnGuardar), "Ponga un nombre al equipo", Snackbar.LENGTH_SHORT).show();
+                } else {
+                    if (equipoPokemon.size() == 1) {
+                    String id = mAuth.getCurrentUser().getUid();
 
+                    Map<String, Object> map = new HashMap<>();
+                        for (int i = 0; i < equipoPokemon.size(); i++) {
+                            map.put("Habilidad", equipoPokemon.get(i).getHabilidad());
+                            map.put("Objeto", equipoPokemon.get(i).getObjeto());
+                            map.put("Ataques", equipoPokemon.get(i).getAtaques().toString());
+
+                    mDatabase.child("users").child(id).child("Equipos").child(editTextNombreEquipo.getText().toString()).child(equipoPokemon.get(i).getName()).setValue(map).addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task) {
+                            if (!task.isSuccessful()) {
+                                Log.d("Registro", task.getException().getMessage());
+                                Toast.makeText(CrearEquipoActivity.this, "No se pudieron meter los datos correctamente", Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                    });}
+                        Toast.makeText(CrearEquipoActivity.this, "Equipo creado", Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(CrearEquipoActivity.this, MisEquiposActivity.class);
+                        startActivity(intent);
+                    } else {
+                    Snackbar.make(findViewById(R.id.CrearEquipoBtnGuardar), "El equipo debe ser de 6 pokemon", Snackbar.LENGTH_SHORT).show();
+                }}
             }
         });
+
 
         btnExportar.setOnClickListener(new View.OnClickListener() {
             @Override

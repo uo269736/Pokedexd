@@ -13,4 +13,6 @@ public class ActivityAuxLigas extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_aux_ligas);
     }
+
+
 }

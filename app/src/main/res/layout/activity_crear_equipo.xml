@@ -13,9 +13,10 @@
         android:layout_height="475dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.493"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/CrearEquipoEtxBuscaPokemon"
-        app:layout_constraintVertical_bias="0.2" />
+        app:layout_constraintVertical_bias="0.155" />
 
     <Button
         android:id="@+id/CrearEquipoBtnGuardar"
@@ -27,7 +28,7 @@
         app:layout_constraintHorizontal_bias="0.258"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/CrearEquipoRecListaEquipo"
-        app:layout_constraintVertical_bias="0.516" />
+        app:layout_constraintVertical_bias="0.675" />
 
     <Button
         android:id="@+id/CrearEquipoBtnExportar"
@@ -36,22 +37,10 @@
         android:text="@string/ExportarEquipo"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.366"
+        app:layout_constraintHorizontal_bias="0.365"
         app:layout_constraintStart_toEndOf="@+id/CrearEquipoBtnGuardar"
         app:layout_constraintTop_toBottomOf="@+id/CrearEquipoRecListaEquipo"
-        app:layout_constraintVertical_bias="0.516" />
-
-    <TextView
-        android:id="@+id/CrearEquipoTxtAñade"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/BuscaPokemonAñade"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.113"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.036" />
+        app:layout_constraintVertical_bias="0.675" />
 
     <EditText
         android:id="@+id/CrearEquipoEtxBuscaPokemon"
@@ -65,7 +54,33 @@
         app:layout_constraintHorizontal_bias="0.162"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/CrearEquipoTxtAñade"
-        app:layout_constraintVertical_bias="0.003" />
+        app:layout_constraintVertical_bias="0.008" />
+
+    <EditText
+        android:id="@+id/editTextNombreEquipo"
+        android:layout_width="294dp"
+        android:layout_height="49dp"
+        android:ems="10"
+        android:hint="@string/NombredelEquipoHint"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.162"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.043" />
+
+    <TextView
+        android:id="@+id/CrearEquipoTxtAñade"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/BuscaPokemonAñade"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.113"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.134" />
 
     <ImageButton
         android:id="@+id/CrearEquipoIbtAñade"
@@ -73,9 +88,22 @@
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.377"
+        app:layout_constraintHorizontal_bias="0.404"
         app:layout_constraintStart_toEndOf="@+id/CrearEquipoEtxBuscaPokemon"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.066"
+        app:layout_constraintVertical_bias="0.169"
         app:srcCompat="@android:drawable/ic_input_add" />
+
+    <TextView
+        android:id="@+id/txtNombreDelEquipo"
+        android:layout_width="259dp"
+        android:layout_height="17dp"
+        android:text="@string/NombredelEquipoHint"
+        app:layout_constraintBottom_toTopOf="@+id/editTextNombreEquipo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.125"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.333" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
