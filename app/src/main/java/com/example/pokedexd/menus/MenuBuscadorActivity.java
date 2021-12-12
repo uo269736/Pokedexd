@@ -11,6 +11,7 @@ import com.example.pokedexd.buscadores.BuscarHabilidadActivity;
 import com.example.pokedexd.buscadores.BuscarObjetosActivity;
 import com.example.pokedexd.buscadores.BuscarPokemonActivity;
 import com.example.pokedexd.buscadores.BuscarTiposActivity;
+import com.example.pokedexd.buscadores.BuscarAtaquesActivity;
 import com.example.pokedexd.R;
 
 public class MenuBuscadorActivity extends AppCompatActivity {
@@ -64,6 +65,14 @@ public class MenuBuscadorActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MenuBuscadorActivity.this, BuscarTiposActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        btnMenuBuscadorAtaques.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MenuBuscadorActivity.this, BuscarAtaquesActivity.class);
                 startActivity(intent);
             }
         });
