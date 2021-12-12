@@ -33,5 +33,6 @@
     <string name="msg_equipo_completo">El equipo no puede tener más de 6 pokemon</string>
     <string name="msg_objeto_no_encontrado">El objeto no ha sido encontrado</string>
     <string name="msg_habilidad_no_encontrada">La habilidad no ha sido encontrada</string>
+    <string name="msg_equipo_exportar">Se ha copiado el equipo al portapapeles</string>
 
 </resources>

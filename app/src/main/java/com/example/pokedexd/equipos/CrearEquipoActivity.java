@@ -135,6 +135,7 @@ public class CrearEquipoActivity extends AppCompatActivity {
                 ClipData clip = ClipData.newPlainText("text", equipoPokemonShowdown);
                 ClipboardManager clipboard = (ClipboardManager) getSystemService(CLIPBOARD_SERVICE);
                 clipboard.setPrimaryClip(clip);
+                Snackbar.make(findViewById(R.id.CrearEquipo), R.string.msg_equipo_exportar, Snackbar.LENGTH_SHORT).show();
             }
         });
     }
