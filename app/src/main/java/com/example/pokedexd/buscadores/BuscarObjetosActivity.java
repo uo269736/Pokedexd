@@ -1,4 +1,4 @@
-package com.example.pokedexd;
+package com.example.pokedexd.buscadores;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -11,6 +11,10 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
 
+import com.google.android.material.snackbar.Snackbar;
+
+import com.example.pokedexd.R;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -18,6 +22,8 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 
 import adapters.ListaObjetosAdapter;
+import models.DescripcionO;
+import models.Nombre;
 import models.Objeto;
 import models.ObjetoRespuesta;
 import models.ObjetoRespuestaIndividual;
@@ -81,10 +87,12 @@ public class BuscarObjetosActivity extends AppCompatActivity {
                 EditText e = (EditText) findViewById(R.id.ObjetoEtxBuscador);
                 String nombre = e.getText().toString();
 
-                if ((nombre.isEmpty() && nombre.equals(" ") && nombre.trim().equals(""))) {
+                if ((nombre.isEmpty() || nombre.trim().equals(""))) {
                     aptoParaCargar = true;
                     offset = 0;
+                    listaObjetosAdapter.eliminarObjetos();
                     obtenerDatos(offset);
+                    Snackbar.make(findViewById(R.id.BuscarObjetos), R.string.msg_objeto_no_encontrado, Snackbar.LENGTH_SHORT).show();
                 } else {
                     buscarObjeto(nombre);
                 }
@@ -118,6 +126,7 @@ public class BuscarObjetosActivity extends AppCompatActivity {
                     }
                 } else {
                     Log.e(TAG, "onResponse: " + response.errorBody());
+                    Snackbar.make(findViewById(R.id.BuscarObjetos), R.string.msg_objeto_no_encontrado, Snackbar.LENGTH_SHORT).show();
                 }
             }
 
@@ -140,14 +149,22 @@ public class BuscarObjetosActivity extends AppCompatActivity {
                 if (response.isSuccessful()) {
                     ObjetoRespuestaIndividual objetoRespuestaIndividual = response.body();
                     if(objetoRespuestaIndividual.getNames().size()>0 && objetoRespuestaIndividual.getDescripciones().size()>0) {
-                        if (objetoRespuestaIndividual.getNames().size() > 1)
-                            o.setNombre(objetoRespuestaIndividual.getNames().get(5).getName());
-                        else
-                            o.setNombre(objetoRespuestaIndividual.getNames().get(0).getName());
-                        if (o.getId() < 402 && objetoRespuestaIndividual.getDescripciones().size()>=13)
-                            o.setDescripcion(objetoRespuestaIndividual.getDescripciones().get(13).getText());
-                        else
-                            o.setDescripcion(objetoRespuestaIndividual.getDescripciones().get(0).getText());
+                        for (Nombre n:objetoRespuestaIndividual.getNames())
+                            if(n.getLanguage().getName().equals("es")) {
+                                o.setNombre(n.getName());
+                                break;
+                            }
+                        if(o.getNombre()==null){
+                            o.setNombre("Nombre no disponible en español");
+                        }
+                        for (DescripcionO d:objetoRespuestaIndividual.getDescripciones())
+                            if(d.getLenguage().getName().equals("es")) {
+                                o.setDescripcion(d.getText());
+                                break;
+                            }
+                        if(o.getDescripcion()==null){
+                            o.setDescripcion("Descripción no disponible en español");
+                        }
                         ArrayList<Objeto> listaO = new ArrayList();
                         listaO.add(o);
                         if (opcion.equals("todos"))
@@ -157,6 +174,7 @@ public class BuscarObjetosActivity extends AppCompatActivity {
                     }
                 } else {
                     Log.e(TAG, "onResponse: " + response.errorBody());
+                    Snackbar.make(findViewById(R.id.BuscarObjetos), R.string.msg_objeto_no_encontrado, Snackbar.LENGTH_SHORT).show();
                 }
             }
 
@@ -178,22 +196,15 @@ public class BuscarObjetosActivity extends AppCompatActivity {
             public void onResponse(Call<ObjetoRespuestaIndividual> call, Response<ObjetoRespuestaIndividual> response) {
                 aptoParaCargar =true;
                 if (response.isSuccessful()) {
-                    if(objetoNombre.equals("") || objetoNombre.isEmpty()){
-                        offset=0;
-                        aptoParaCargar=true;
-                        listaObjetosAdapter.eliminarObjetos();
-                        obtenerDatos(offset);
-                    }
-                    else{
-                        ObjetoRespuestaIndividual objetoRespuestaIndividual = response.body();
-                        if(objetoRespuestaIndividual!=null) {
-                            System.out.println("https://pokeapi.co/api/v2/item/"+objetoRespuestaIndividual.getId());
-                            Objeto o=new Objeto(objetoNombre, "https://pokeapi.co/api/v2/item/"+objetoRespuestaIndividual.getId());
-                            agregarDescripcionNombre(o,"uno");
-                        }
+                    ObjetoRespuestaIndividual objetoRespuestaIndividual = response.body();
+                    if(objetoRespuestaIndividual!=null) {
+                        System.out.println("https://pokeapi.co/api/v2/item/"+objetoRespuestaIndividual.getId());
+                        Objeto o=new Objeto(objetoNombre, "https://pokeapi.co/api/v2/item/"+objetoRespuestaIndividual.getId());
+                        agregarDescripcionNombre(o,"uno");
                     }
                 } else {
                     Log.e(TAG, "onResponse: " + response.errorBody());
+                    Snackbar.make(findViewById(R.id.BuscarObjetos), R.string.msg_objeto_no_encontrado, Snackbar.LENGTH_SHORT).show();
                 }
             }
 
@@ -236,6 +247,6 @@ public class BuscarObjetosActivity extends AppCompatActivity {
                 }
             }
         }
-        return "";
+        return nombreObjeto;
     }
 }

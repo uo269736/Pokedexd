@@ -1,4 +1,4 @@
-package com.example.pokedexd;
+package com.example.pokedexd.buscadores;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -15,6 +15,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+
+import com.example.pokedexd.R;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -58,6 +60,7 @@ public class TiposFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
     }
 
     @Override

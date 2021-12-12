@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="editTextNombre">Nombre</string>
+    <string name="btnRegistrarse">Registrarse</string>
+    <string name="IniciarSesion">Iniciar Sesión</string>
+    <string name="btnNuevoUsuario">¿Nuevo usuario?</string>
+    <string name="HintEmail">Email</string>
+    <string name="HintContraseña">Contraseña</string>
+    <string name="HintNombre">Nombre</string>
+    <string name="CerrarSesion">Cerrar Sesión</string>
+</resources>

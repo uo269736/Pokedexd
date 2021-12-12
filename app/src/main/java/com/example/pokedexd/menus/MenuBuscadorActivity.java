@@ -7,11 +7,11 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-import com.example.pokedexd.BuscarAtaquesActivity;
-import com.example.pokedexd.BuscarHabilidadActivity;
-import com.example.pokedexd.BuscarObjetosActivity;
-import com.example.pokedexd.BuscarPokemonActivity;
-import com.example.pokedexd.BuscarTiposActivity;
+import com.example.pokedexd.buscadores.BuscarHabilidadActivity;
+import com.example.pokedexd.buscadores.BuscarObjetosActivity;
+import com.example.pokedexd.buscadores.BuscarPokemonActivity;
+import com.example.pokedexd.buscadores.BuscarTiposActivity;
+import com.example.pokedexd.buscadores.BuscarAtaquesActivity;
 import com.example.pokedexd.R;
 
 public class MenuBuscadorActivity extends AppCompatActivity {
