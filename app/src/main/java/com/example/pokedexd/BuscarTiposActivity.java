@@ -85,7 +85,7 @@ public class BuscarTiposActivity extends AppCompatActivity {
 
     private void accionSpinner() {
         if (!spTipos.getSelectedItem().toString().equals("")) {
-            this.tipoSeleccionado = traducirTipoIngles(spTipos.getSelectedItem().toString()).toLowerCase();
+            this.tipoSeleccionado = spTipos.getSelectedItem().toString().toLowerCase();
         }
 
     }
@@ -181,74 +181,4 @@ public class BuscarTiposActivity extends AppCompatActivity {
             return false;
         }
     };
-
-    private String traducirTipoIngles(String tipo) {
-        InputStream file = null;
-        InputStreamReader reader = null;
-        BufferedReader bufferedReader = null;
-        try {
-            file = getAssets().open("TiposPokemon.csv");
-            reader = new InputStreamReader(file);
-            bufferedReader = new BufferedReader(reader);
-
-            String line = null;
-            while ((line = bufferedReader.readLine()) != null) {
-                String[] datos = line.split(";");
-                if (datos != null) {
-                    if (datos[1].toLowerCase().equals(tipo.toLowerCase()) || datos[2].toLowerCase().equals(tipo.toLowerCase())) {
-                        return datos[1]; //es el nombre en ingles
-                    }
-                }
-            }
-        } catch (
-                IOException e) {
-            e.printStackTrace();
-        } finally {
-            if (bufferedReader != null) {
-                try {
-                    bufferedReader.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-        }
-        return "";
-    }
-
-    /*private void cargarLista(String nombreTipo, String fortaleza) {
-        PokeapiService service = retrofit.create(PokeapiService.class);
-
-        Call<TipoRespuestaIndividual> tipoRespuestaIndividualCall = service.obtenerDebilidades(nombreTipo.toLowerCase());
-        tipoRespuestaIndividualCall.enqueue(new Callback<TipoRespuestaIndividual>() {
-            @Override
-            public void onResponse(Call<TipoRespuestaIndividual> call, Response<TipoRespuestaIndividual> response) {
-                if (response.isSuccessful()) {
-                    TipoRespuestaIndividual tipoRespuestaIndividual = response.body();
-                    List<String> mostrar = new ArrayList<>();
-                    Relacion r = tipoRespuestaIndividual.getDamage_relations();
-                    switch (fortaleza) {
-                        case "debil":
-                            for (Tipo t : r.getHalf_damage_to())
-                                mostrar.add(traducirTipoEspañol(t.getName()));
-                            break;
-                        case "eficaz":
-                            for (Tipo t : r.getDouble_damage_to())
-                                mostrar.add(traducirTipoEspañol(t.getName()));
-                            break;
-                        case "inmune":
-                            for (Tipo t : r.getNo_damage_to())
-                                mostrar.add(traducirTipoEspañol(t.getName()));
-                            break;
-                    }
-                    listaTiposAdapter.removeListaTipos();
-                    listaTiposAdapter.addListaTipos(mostrar);
-                }
-            }
-
-            @Override
-            public void onFailure(Call<TipoRespuestaIndividual> call, Throwable t) {
-                Log.e(TAG, "onFailure: " + t.getMessage());
-            }
-        });
-    }*/
 }

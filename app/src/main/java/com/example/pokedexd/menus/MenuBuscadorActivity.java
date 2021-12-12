@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import com.example.pokedexd.BuscarAtaquesActivity;
 import com.example.pokedexd.BuscarHabilidadActivity;
 import com.example.pokedexd.BuscarObjetosActivity;
 import com.example.pokedexd.BuscarPokemonActivity;
@@ -64,6 +65,14 @@ public class MenuBuscadorActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MenuBuscadorActivity.this, BuscarTiposActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        btnMenuBuscadorAtaques.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MenuBuscadorActivity.this, BuscarAtaquesActivity.class);
                 startActivity(intent);
             }
         });

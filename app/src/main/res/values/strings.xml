@@ -7,6 +7,9 @@
     <string name="NombreObjeto">Nombre del Objeto</string>
     <string name="Compartir">Compartir</string>
 
+    <string name="NombreAtaque">Nombre del ataque</string>
+    <string name="IntroduceNombreAtaque">Introduce el nombre del ataque</string>
+
 
     <!-- botones pa cambiar de fragment -->
     <string name="btInflige">Inflige</string>

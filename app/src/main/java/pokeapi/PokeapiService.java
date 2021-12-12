@@ -1,5 +1,7 @@
 package pokeapi;
 
+import models.AtaqueRespuesta;
+import models.AtaqueRespuestaIndividual;
 import models.HabilidadRespuesta;
 import models.HabilidadRespuestaIndividual;
 import models.ObjetoRespuesta;
@@ -38,4 +40,10 @@ public interface PokeapiService {
 
     @GET("type/{name}")
     Call<TipoRespuestaIndividual> obtenerDebilidades(@Path("name") String nombre);
+
+    @GET("move")
+    Call<AtaqueRespuesta> obtenerListaAtaque(@Query("limit") int limit, @Query("offset") int offset);
+
+    @GET("move/{name}")
+    Call<AtaqueRespuestaIndividual> obtenerAtaque(@Path("name") String nombre);
 }

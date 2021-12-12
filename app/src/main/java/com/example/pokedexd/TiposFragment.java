@@ -46,6 +46,9 @@ public class TiposFragment extends Fragment {
     private Context context;
     private String nombreTipo;
     private String ataque;
+    private List<String> debil;
+    private List<String> eficaz;
+    private List<String> inmune;
 
 
     public TiposFragment() {
@@ -74,20 +77,27 @@ public class TiposFragment extends Fragment {
                 .baseUrl("https://pokeapi.co/api/v2/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
+        debil = new ArrayList<>();
+        eficaz = new ArrayList<>();
+        inmune = new ArrayList<>();
+        nombreTipo = traducirTipoIngles(nombreTipo).toLowerCase();
+        llenarListas();
         return root;
     }
 
     public static TiposFragment newInstance(String nombreTipo, String ataque) {
         TiposFragment fragment = new TiposFragment();
-        fragment.nombreTipo = nombreTipo.toLowerCase();
+        fragment.nombreTipo = nombreTipo;
         fragment.ataque = ataque;
         return fragment;
     }
 
-    private void cargarLista(String fortaleza) {
+    private void llenarListas() {
         PokeapiService service = retrofit.create(PokeapiService.class);
-
         Call<TipoRespuestaIndividual> tipoRespuestaIndividualCall = service.obtenerDebilidades(nombreTipo);
+        eficaz.clear();
+        debil.clear();
+        inmune.clear();
         tipoRespuestaIndividualCall.enqueue(new Callback<TipoRespuestaIndividual>() {
             @Override
             public void onResponse(Call<TipoRespuestaIndividual> call, Response<TipoRespuestaIndividual> response) {
@@ -95,39 +105,23 @@ public class TiposFragment extends Fragment {
                     TipoRespuestaIndividual tipoRespuestaIndividual = response.body();
                     List<String> mostrar = new ArrayList<>();
                     Relacion r = tipoRespuestaIndividual.getDamage_relations();
-                    if (ataque.equals(BuscarTiposActivity.INFLIGE))
-                        switch (fortaleza) {
-                            case "debil":
-                                for (Tipo t : r.getHalf_damage_to())
-                                    mostrar.add(traducirTipoEspañol(t.getName()));
-                                break;
-                            case "eficaz":
-                                for (Tipo t : r.getDouble_damage_to())
-                                    mostrar.add(traducirTipoEspañol(t.getName()));
-                                break;
-                            case "inmune":
-                                for (Tipo t : r.getNo_damage_to())
-                                    mostrar.add(traducirTipoEspañol(t.getName()));
-                                break;
+                    if (ataque.equals(BuscarTiposActivity.INFLIGE)) {
+                        for(Tipo t : r.getHalf_damage_to())
+                            debil.add(traducirTipoEspañol(t.getName()));
+                        for(Tipo t : r.getDouble_damage_to())
+                            eficaz.add(traducirTipoEspañol(t.getName()));
+                        for(Tipo t : r.getNo_damage_to())
+                            inmune.add(traducirTipoEspañol(t.getName()));
                         }
-                    if(ataque.equals(BuscarTiposActivity.RECIBE))
-                        switch (fortaleza) {
-                            case "debil":
-                                for (Tipo t : r.getHalf_damage_from())
-                                    mostrar.add(traducirTipoEspañol(t.getName()));
-                                break;
-                            case "eficaz":
-                                for (Tipo t : r.getDouble_damage_from())
-                                    mostrar.add(traducirTipoEspañol(t.getName()));
-                                break;
-                            case "inmune":
-                                for (Tipo t : r.getNo_damage_from())
-                                    mostrar.add(traducirTipoEspañol(t.getName()));
-                                break;
-                        }
-                    listaTiposAdapter.removeListaTipos();
-                    listaTiposAdapter.addListaTipos(mostrar);
+                    if(ataque.equals(BuscarTiposActivity.RECIBE)) {
+                        for(Tipo t : r.getHalf_damage_from())
+                            debil.add(traducirTipoEspañol(t.getName()));
+                        for(Tipo t : r.getDouble_damage_from())
+                            eficaz.add(traducirTipoEspañol(t.getName()));
+                        for(Tipo t : r.getNo_damage_from())
+                            inmune.add(traducirTipoEspañol(t.getName()));
                 }
+            }
             }
 
             @Override
@@ -135,6 +129,21 @@ public class TiposFragment extends Fragment {
                 Log.e(TAG, "onFailure: " + t.getMessage());
             }
         });
+    }
+
+    private void cargarLista(String fortaleza) {
+        listaTiposAdapter.removeListaTipos();
+        switch(fortaleza) {
+            case "debil":
+                listaTiposAdapter.addListaTipos(debil);
+                break;
+            case "eficaz":
+                listaTiposAdapter.addListaTipos(eficaz);
+                break;
+            case "inmune":
+                listaTiposAdapter.addListaTipos(inmune);
+                break;
+        }
     }
 
     private String traducirTipoEspañol(String tipo) {
@@ -150,9 +159,44 @@ public class TiposFragment extends Fragment {
             while ((line = bufferedReader.readLine()) != null) {
                 String[] datos = line.split(";");
                 if (datos != null) {
-                    if (datos[1].toLowerCase().equals(tipo.toLowerCase())
-                            || datos[2].toLowerCase().equals(tipo.toLowerCase())) {
+                    if (datos[1].toLowerCase().equals(tipo)
+                            || datos[2].toLowerCase().equals(tipo)) {
                         return datos[2]; //es el nombre en español
+                    }
+                }
+            }
+        } catch (
+                IOException e) {
+            e.printStackTrace();
+        } finally {
+            if (bufferedReader != null) {
+                try {
+                    bufferedReader.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+        return "";
+    }
+
+    private String traducirTipoIngles(String tipo) {
+        InputStream file = null;
+        InputStreamReader reader = null;
+        BufferedReader bufferedReader = null;
+        tipo = tipo.toLowerCase();
+        try {
+            file = context.getAssets().open("TiposPokemon.csv");
+            reader = new InputStreamReader(file);
+            bufferedReader = new BufferedReader(reader);
+
+            String line = null;
+            while ((line = bufferedReader.readLine()) != null) {
+                String[] datos = line.split(";");
+                if (datos != null) {
+                    if (datos[1].toLowerCase().equals(tipo)
+                            || datos[2].toLowerCase().equals(tipo)) {
+                        return datos[1]; //es el nombre en ingles
                     }
                 }
             }
