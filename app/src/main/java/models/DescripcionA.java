@@ -2,9 +2,9 @@ package models;
 
 public class DescripcionA {
     private String flavor_text;
-    private Idioma language;
+    private Lenguaje language;
 
-    public DescripcionA(String flavor_text, Idioma language) {
+    public DescripcionA(String flavor_text, Lenguaje language) {
         this.flavor_text = flavor_text;
         this.language = language;
     }
@@ -13,11 +13,7 @@ public class DescripcionA {
         return flavor_text;
     }
 
-    public Idioma getLanguage() {
+    public Lenguaje getLenguage() {
         return language;
-    }
-
-    public int getIdIdioma() {
-        return language.getId();
     }
 }

@@ -12,6 +12,7 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 
 import com.example.pokedexd.R;
+import com.google.android.material.snackbar.Snackbar;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -25,6 +26,8 @@ import models.AtaqueRespuesta;
 import models.AtaqueRespuestaIndividual;
 import models.DescripcionA;
 
+import models.DescripcionH;
+import models.Nombre;
 import pokeapi.PokeapiService;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -84,10 +87,11 @@ public class BuscarAtaquesActivity extends AppCompatActivity {
                 EditText e = (EditText) findViewById(R.id.AtaqueEtxBuscador);
                 String nombre = e.getText().toString();
 
-                if ((nombre.isEmpty() && nombre.equals(" ") && nombre.trim().equals(""))) {
+                if ((nombre.isEmpty() || nombre.trim().equals(""))) {
                     aptoParaCargar = true;
                     offset = 0;
                     obtenerDatos(offset);
+                    Snackbar.make(findViewById(R.id.BuscarAtaques), R.string.msg_ataque_no_encontrado, Snackbar.LENGTH_SHORT).show();
                 } else {
                     buscarAtaque(nombre);
                 }
@@ -118,11 +122,11 @@ public class BuscarAtaquesActivity extends AppCompatActivity {
                     AtaqueRespuesta ataqueRespuesta = response.body();
                     ArrayList<Ataque> listaAtaques = ataqueRespuesta.getResults();
                     for (Ataque a : listaAtaques) {
-
                         agregarDescripcionNombre(a,"todos");
                     }
                 } else {
                     Log.e(TAG, "onResponse: " + response.errorBody());
+                    Snackbar.make(findViewById(R.id.BuscarAtaques), R.string.msg_ataque_no_encontrado, Snackbar.LENGTH_SHORT).show();
                 }
             }
 
@@ -143,18 +147,23 @@ public class BuscarAtaquesActivity extends AppCompatActivity {
             public void onResponse(Call<AtaqueRespuestaIndividual> call, Response<AtaqueRespuestaIndividual> response) {
                 aptoParaCargar = true;
                 if (response.isSuccessful()) {
-
                     AtaqueRespuestaIndividual ataqueRespuestaIndividual = response.body();
-                    if(ataqueRespuestaIndividual.getNames().size()>0) {
-                        if (ataqueRespuestaIndividual.getNames().size() > 1)
-                            a.setName(ataqueRespuestaIndividual.getNames().get(5).getName());
-                        else
-                            a.setName(ataqueRespuestaIndividual.getNames().get(0).getName());
-                        for(DescripcionA d : ataqueRespuestaIndividual.getFlavorTextEntries()) {
-                            if(d.getLanguage().getName().equals("es")) {
+                    if(ataqueRespuestaIndividual.getNames().size()>0 && ataqueRespuestaIndividual.getFlavorTextEntries().size()>0) {
+                        for (Nombre n:ataqueRespuestaIndividual.getNames())
+                            if(n.getLanguage().getName().equals("es")) {
+                                a.setNombre(n.getName());
+                                break;
+                            }
+                        if(a.getNombre()==null){
+                            a.setNombre("Nombre no disponible en español");
+                        }
+                        for (DescripcionA d:ataqueRespuestaIndividual.getFlavorTextEntries())
+                            if(d.getLenguage().getName().equals("es")) {
                                 a.setDescription(d.getFlavor_text());
                                 break;
                             }
+                        if(a.getDescription()==null){
+                            a.setDescription("Descripción no disponible en español");
                         }
                         a.setType(traducirTipo(ataqueRespuestaIndividual.getType().getName()));
                         ArrayList<Ataque> ataques = new ArrayList();
@@ -166,6 +175,7 @@ public class BuscarAtaquesActivity extends AppCompatActivity {
                     }
                 } else {
                     Log.e(TAG, "Falla ataqueRepuestaIndividual, onResponse: " + response.errorBody());
+                    Snackbar.make(findViewById(R.id.BuscarAtaques), R.string.msg_ataque_no_encontrado, Snackbar.LENGTH_SHORT).show();
                 }
             }
 
@@ -187,20 +197,14 @@ public class BuscarAtaquesActivity extends AppCompatActivity {
             public void onResponse(Call<AtaqueRespuestaIndividual> call, Response<AtaqueRespuestaIndividual> response) {
                 aptoParaCargar =true;
                 if (response.isSuccessful()) {
-                    if (ataqueNombre.equals("") || ataqueNombre.isEmpty()) {
-                        offset = 0;
-                        aptoParaCargar = true;
-                        listaAtaquesAdapter.eliminarAtaques();
-                        obtenerDatos(offset);
-                    } else {
-                        AtaqueRespuestaIndividual ataqueRespuestaIndividual = response.body();
-                        if (ataqueRespuestaIndividual != null) {
-                            Ataque a = new Ataque(ataqueNombre);
-                            agregarDescripcionNombre(a, "uno");
-                        }
+                    AtaqueRespuestaIndividual ataqueRespuestaIndividual = response.body();
+                    if (ataqueRespuestaIndividual != null) {
+                        Ataque a = new Ataque(ataqueNombre);
+                        agregarDescripcionNombre(a, "uno");
                     }
                 } else {
                     Log.e(TAG, "onResponse: " + response.errorBody());
+                    Snackbar.make(findViewById(R.id.BuscarAtaques), R.string.msg_ataque_no_encontrado, Snackbar.LENGTH_SHORT).show();
                 }
             }
 
@@ -245,7 +249,7 @@ public class BuscarAtaquesActivity extends AppCompatActivity {
                 }
             }
         }
-        return "";
+        return nombreAtaque;
     }
 
     private String traducirTipo(String tipo) {

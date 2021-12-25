@@ -1,66 +1,216 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".menus.MenuBuscadorActivity">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".menus.MenuBuscadorActivity"
+    android:background="@color/lightWhite">
 
-    <Button
-        android:id="@+id/BuscadorBtnAtaques"
-        android:layout_width="228dp"
-        android:layout_height="66dp"
-        android:layout_marginBottom="44dp"
-        android:text="@string/btnAtaques"
-        app:layout_constraintBottom_toTopOf="@+id/BuscadorBtnObjetos"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:orientation="vertical">
 
-    <Button
-        android:id="@+id/BuscadorBtnObjetos"
-        android:layout_width="228dp"
-        android:layout_height="66dp"
-        android:layout_marginBottom="44dp"
-        android:text="@string/btnObjetos"
-        app:layout_constraintBottom_toTopOf="@+id/BuscadorBtnHabilidades"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/boogaloo"
+            android:padding="10dp"
+            android:text="@string/Buscadores"
+            android:textAllCaps="true"
+            android:textSize="30sp" />
 
-    <Button
-        android:id="@+id/BuscadorBtnHabilidades"
-        android:layout_width="228dp"
-        android:layout_height="66dp"
-        android:layout_marginBottom="80dp"
-        android:text="@string/btnHabilidades"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent" />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="190dp">
 
-    <Button
-        android:id="@+id/BuscadorBtnTipos"
-        android:layout_width="228dp"
-        android:layout_height="66dp"
-        android:layout_marginBottom="44dp"
-        android:text="@string/btnTipos"
-        app:layout_constraintBottom_toTopOf="@+id/BuscadorBtnAtaques"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent" />
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:background="@drawable/amarillocirculo"
+                android:layout_margin="20dp">
 
-    <Button
-        android:id="@+id/BuscadorBtnPokemon"
-        android:layout_width="228dp"
-        android:layout_height="66dp"
-        android:layout_marginBottom="44dp"
-        android:text="@string/btnPokemon"
-        app:layout_constraintBottom_toTopOf="@+id/BuscadorBtnTipos"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/baloo"
+                    android:padding="25dp"
+                    android:text="@string/btnAtaques"
+                    android:textColor="@color/black"
+                    android:textSize="30sp" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+                <Button
+                    android:id="@+id/BuscadorBtnAtaques"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/BuscadoresAtaques"
+                    android:background="#00000000"
+                    android:padding="20dp"
+                    android:textColor="@color/black"
+                    android:layout_alignParentBottom="true"/>
+
+            </RelativeLayout>
+
+            <ImageView
+                android:layout_width="87dp"
+                android:layout_height="104dp"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="-10dp"
+                android:layout_marginRight="16dp"
+                android:src="@drawable/ataquesicon" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:background="@drawable/rojo"
+            android:layout_margin="20dp">
+
+            <ImageView
+                android:layout_width="120dp"
+                android:layout_height="match_parent"
+                android:src="@drawable/objetosicon"
+                android:layout_marginLeft="20dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/btnObjetos"
+                android:textSize="30sp"
+                android:fontFamily="@font/baloo"
+                android:textColor="@color/white"
+                android:layout_alignParentRight="true"
+                android:padding="25dp"/>
+
+            <Button
+                android:id="@+id/BuscadorBtnObjetos"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/BuscadoresObjetos"
+                android:layout_alignParentRight="true"
+                android:textColor="@color/white"
+                android:background="#00000000"
+                android:padding="20dp"
+                android:layout_alignParentBottom="true"/>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="190dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:background="@drawable/naranja"
+                android:layout_margin="20dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/baloo"
+                    android:padding="25dp"
+                    android:text="@string/btnHabilidades"
+                    android:textColor="@color/black"
+                    android:textSize="30sp" />
+
+                <Button
+                    android:id="@+id/BuscadorBtnHabilidades"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/BuscadoresHabilidades"
+                    android:background="#00000000"
+                    android:padding="20dp"
+                    android:textColor="@color/black"
+                    android:layout_alignParentBottom="true"/>
+
+            </RelativeLayout>
+
+            <ImageView
+                android:layout_width="87dp"
+                android:layout_height="104dp"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="-10dp"
+                android:layout_marginRight="16dp"
+                android:src="@drawable/habilidadesicon" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:background="@drawable/morado"
+            android:layout_margin="20dp">
+
+            <ImageView
+                android:layout_width="120dp"
+                android:layout_height="match_parent"
+                android:src="@drawable/tiposicon"
+                android:layout_marginLeft="20dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/btnObjetos"
+                android:textSize="30sp"
+                android:fontFamily="@font/baloo"
+                android:textColor="@color/white"
+                android:layout_alignParentRight="true"
+                android:padding="25dp"/>
+
+            <Button
+                android:id="@+id/BuscadorBtnTipos"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/BuscadoresObjetos"
+                android:layout_alignParentRight="true"
+                android:textColor="@color/white"
+                android:background="#00000000"
+                android:padding="20dp"
+                android:layout_alignParentBottom="true"/>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:background="@drawable/azul"
+            android:layout_margin="20dp">
+
+            <ImageView
+                android:layout_width="120dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="20dp"
+                android:src="@drawable/pokemonicon" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/btnPokemon"
+                android:textSize="30sp"
+                android:fontFamily="@font/baloo"
+                android:textColor="@color/black"
+                android:layout_alignParentRight="true"
+                android:padding="25dp"/>
+
+            <Button
+                android:id="@+id/BuscadorBtnPokemon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/BuscadoresPokemon"
+                android:layout_alignParentRight="true"
+                android:textColor="@color/black"
+                android:background="#00000000"
+                android:padding="20dp"
+                android:layout_alignParentBottom="true"/>
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+
+
+</ScrollView>

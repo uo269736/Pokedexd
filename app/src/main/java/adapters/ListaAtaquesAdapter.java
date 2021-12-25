@@ -35,7 +35,7 @@ public class ListaAtaquesAdapter extends RecyclerView.Adapter<ListaAtaquesAdapte
     @Override
     public void onBindViewHolder(@NonNull ListaAtaquesAdapter.ViewHolder holder, int position) {
     Ataque a = dataset.get(position);
-    holder.nombreTv.setText(a.getName());
+    holder.nombreTv.setText(a.getNombre());
     holder.descripcionTv.setText(a.getDescription());
     holder.tipoTv.setText(a.getType());
     }

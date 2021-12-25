@@ -3,6 +3,7 @@ package models;
 public class Ataque {
 
     private String name;
+    private String nombre;
     private int id;
     private String type;
     private String description;
@@ -35,6 +36,14 @@ public class Ataque {
 
     public void setType(String type) {
         this.type = type;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 }
 
