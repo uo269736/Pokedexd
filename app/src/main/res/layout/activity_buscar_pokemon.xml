@@ -5,67 +5,53 @@
     android:id="@+id/BuscarPokemon"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".buscadores.BuscarPokemonActivity">
+    tools:context=".buscadores.BuscarPokemonActivity"
+    android:background="@drawable/fondopokedexcompleto">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0">
+        android:orientation="vertical">
 
         <TextView
             android:id="@+id/PokemonTxtIntroduce"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="20dp"
-            android:text="@string/IntroduceNombre"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.129"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.047" />
+            android:text="@string/BuscadoresPokemon"
+            android:textAllCaps="true"
+            android:textColor="@color/white"
+            android:textSize="30sp"
+            android:fontFamily="@font/boogaloo"/>
 
         <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
             android:orientation="horizontal"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0">
+            android:background="@drawable/borde_edittext">
 
             <EditText
                 android:id="@+id/PokemonEtxBuscador"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginBottom="15dp"
-                android:ems="10"
+                android:layout_marginLeft="10dp"
+                android:layout_width="265dp"
+                android:layout_height="match_parent"
                 android:hint="@string/NombrePokemon"
-                android:inputType="textPersonName"
-                android:minHeight="48dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.129"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/PokemonTxtIntroduce"
-                app:layout_constraintVertical_bias="0.017" />
+                android:fontFamily="@font/baloo"
+                android:textColor="@color/white"
+                android:textColorHint="@color/white"
+                android:color="@color/white"
+                android:backgroundTint="@color/white"/>
 
             <ImageButton
                 android:id="@+id/PokemonIbtBuscar"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                app:srcCompat="@android:drawable/ic_menu_search" />
+                android:layout_width="60dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginRight="15dp"
+                app:srcCompat="@drawable/lupa"
+                android:background="#00000000"/>
 
         </LinearLayout>
 
@@ -74,12 +60,9 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_gravity="center_horizontal"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.6"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/PokemonEtxBuscador"
-            app:layout_constraintVertical_bias="1.0" />
+            android:layout_margin="10dp"
+            android:background="@drawable/borde_pantalla_recycler"
+            android:padding="10dp" />
 
     </LinearLayout>
 

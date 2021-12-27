@@ -90,6 +90,7 @@ public class BuscarAtaquesActivity extends AppCompatActivity {
                 if ((nombre.isEmpty() || nombre.trim().equals(""))) {
                     aptoParaCargar = true;
                     offset = 0;
+                    listaAtaquesAdapter.eliminarAtaques();
                     obtenerDatos(offset);
                     Snackbar.make(findViewById(R.id.BuscarAtaques), R.string.msg_ataque_no_encontrado, Snackbar.LENGTH_SHORT).show();
                 } else {

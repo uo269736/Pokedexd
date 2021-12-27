@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="btnBuscador">Buscador</string>
-    <string name="btnEquipos">Crear \n equipo</string>
+    <string name="btnEquipos">Crear equipo</string>
     <string name="btnLiga">Crear Liga</string>
     <string name="btnInicioSesion">Iniciar sesión</string>
 </resources>

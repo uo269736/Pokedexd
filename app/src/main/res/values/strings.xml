@@ -31,6 +31,7 @@
     <string name="Ataque3Pokemon">Ataque 3</string>
     <string name="Ataque4Pokemon">Ataque 4</string>
     <string name="HbilidadPokemonTitulo">Habilidad del pokemon</string>
+    <string name="add_pokemon_equipo">Añadir pokemon</string>
     <string name="msg_nuevo_pokemon">ha sido añadido al equipo</string>
     <string name="msg_fallo">Ha ocurrido un error</string>
     <string name="msg_pokemon_no_encontrado">El pokemon no ha sido encontrado</string>
@@ -59,5 +60,6 @@
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
     <string name="msg_equipo_exportar">Se ha copiado el equipo al portapapeles</string>
     <string name="msg_ataque_no_encontrado">El ataque no ha sido encontrado</string>
+    <string name="msg_ataques_no_encontrados">Uno o más ataques no han sido encontrados</string>
 
 </resources>

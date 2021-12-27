@@ -5,88 +5,71 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".menus.MenuPrincipalActivity"
-    android:background="@color/lightWhite">
+    android:background="@drawable/fondopokedex">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:layout_margin="0dp">
+            android:layout_margin="20dp">
 
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_alignParentRight="true"
-                android:layout_marginTop="50dp"
+                android:layout_marginTop="110dp"
                 android:src="@drawable/pokedexdcurvado" />
 
             <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="190dp">
+                android:layout_width="300dp"
+                android:layout_height="140dp"
+                android:layout_gravity="center">
 
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="150dp"
+                    android:layout_height="match_parent"
                     android:layout_margin="20dp"
-                    android:background="@drawable/azulpokemon">
-
+                    android:background="@drawable/borde_button_ama">
 
                     <Button
                         android:id="@+id/MenuBtnBuscador"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentLeft="true"
-                        android:layout_marginTop="28dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
                         android:background="#00000000"
                         android:fontFamily="@font/baloo"
                         android:padding="15dp"
                         android:text="@string/btnBuscador"
                         android:textColor="@color/white"
-                        android:textSize="27sp" />
+                        android:textSize="28sp" />
 
                 </RelativeLayout>
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:layout_marginRight="-40dp"
-                    android:src="@drawable/pokedexicon" />
 
             </RelativeLayout>
 
             <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="190dp">
+                android:layout_width="300dp"
+                android:layout_height="140dp"
+                android:layout_gravity="center">
 
 
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="150dp"
+                    android:layout_height="match_parent"
                     android:layout_margin="20dp"
-                    android:background="@drawable/amarillopokemon">
+                    android:background="@drawable/borde_button_azu">
 
                     <Button
                         android:id="@+id/MenuBtnEquipo"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="-5dp"
-                        android:layout_marginRight="-120dp"
+                        android:layout_height="match_parent"
                         android:background="#00000000"
                         android:fontFamily="@font/baloo"
-                        android:padding="20dp"
+                        android:padding="15dp"
                         android:text="@string/btnEquipos"
-                        android:textColor="@color/black"
-                        android:textSize="27sp" />
+                        android:textColor="@color/white"
+                        android:textSize="28sp" />
 
                 </RelativeLayout>
-
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_alignParentLeft="true"
-                    android:layout_marginLeft="-200dp"
-                    android:src="@drawable/entrenador" />
 
             </RelativeLayout>
 
@@ -94,6 +77,7 @@
                 android:id="@+id/menuBtnInicioSesion"
                 android:layout_width="228dp"
                 android:layout_height="66dp"
+                android:layout_marginTop="300dp"
                 android:text="@string/btnInicioSesion"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -106,7 +90,6 @@
                 android:id="@+id/MenuBtnLiga"
                 android:layout_width="228dp"
                 android:layout_height="66dp"
-                android:layout_marginTop="40dp"
                 android:text="@string/btnLiga"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.497"
