@@ -18,6 +18,7 @@ import com.example.pokedexd.R;
 import java.util.ArrayList;
 
 import models.Pokemon;
+import models.database.Equipo;
 
 public class EquipoPokemonAdapter extends RecyclerView.Adapter<EquipoPokemonAdapter.ViewHolder> {
 

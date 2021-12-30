@@ -76,7 +76,7 @@ public class ListaPokemonAdapter extends RecyclerView.Adapter<ListaPokemonAdapte
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            fotoImageView = (ImageView)  itemView.findViewById(R.id.fotoImageView);
+            fotoImageView  = (ImageView)  itemView.findViewById(R.id.fotoImageView);
             nombreTextView = (TextView) itemView.findViewById(R.id.nombreTextView);
         }
     }

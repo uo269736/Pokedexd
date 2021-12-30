@@ -36,25 +36,25 @@ public class AddPokemonEquipoActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_pokemon_equipo);
 
-        Intent intent = getIntent();
-        String nombre = intent.getStringExtra(CrearEquipoActivity.NOMBRE_POKEMON);
+        Intent intent   = getIntent();
+        String nombre   = intent.getStringExtra(CrearEquipoActivity.NOMBRE_POKEMON);
 
-        btnGuardar = (Button) findViewById(R.id.btnGuardarPokemon);
-        nombrePokemon = (EditText) findViewById(R.id.textNombrePokemon);
+        btnGuardar      = (Button) findViewById(R.id.btnGuardarPokemon);
+        nombrePokemon   = (EditText) findViewById(R.id.textNombrePokemon);
         nombrePokemon.setText(nombre);
         nombrePokemon.setEnabled(false);
-        nombreObjeto = (EditText) findViewById(R.id.textNombreObjeto);
+        nombreObjeto    = (EditText) findViewById(R.id.textNombreObjeto);
         nombreHabilidad = (EditText) findViewById(R.id.textNombreHabilidad);
-        nombreAtaque1 = (EditText) findViewById(R.id.textAtaque1);
-        nombreAtaque2 = (EditText) findViewById(R.id.textAtaque2);
-        nombreAtaque3 = (EditText) findViewById(R.id.textAtaque3);
-        nombreAtaque4 = (EditText) findViewById(R.id.textAtaque4);
+        nombreAtaque1   = (EditText) findViewById(R.id.textAtaque1);
+        nombreAtaque2   = (EditText) findViewById(R.id.textAtaque2);
+        nombreAtaque3   = (EditText) findViewById(R.id.textAtaque3);
+        nombreAtaque4   = (EditText) findViewById(R.id.textAtaque4);
 
         btnGuardar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if(validar()){
-                    pokemon = new Pokemon(nombrePokemon.getText().toString(),"https://pokeapi.co/api/v2/pokemon/"+nombrePokemon.getText().toString());
+                    pokemon = new Pokemon(nombrePokemon.getText().toString(),"https://pokeapi.co/api/v2/pokemon/" + nombrePokemon.getText().toString());
                     pokemon.setObjeto(encontrarNombre(nombreObjeto.getText().toString()));
                     pokemon.setHabilidad(nombreHabilidad.getText().toString());
                     ArrayList<String> ataques = new ArrayList<>();
@@ -74,14 +74,14 @@ public class AddPokemonEquipoActivity extends AppCompatActivity {
     }
 
     protected String encontrarNombre(String nombreObjeto){
-        InputStream file = null;
-        InputStreamReader reader= null;
+        InputStream file              = null;
+        InputStreamReader reader      = null;
         BufferedReader bufferedReader = null;
 
         try{
             file= getAssets().open("ObjetosPokemon.csv");
-            reader = new InputStreamReader(file);
-            bufferedReader= new BufferedReader(reader);
+            reader         = new InputStreamReader(file);
+            bufferedReader = new BufferedReader(reader);
 
             String line = null;
             while((line= bufferedReader.readLine())!=null) {

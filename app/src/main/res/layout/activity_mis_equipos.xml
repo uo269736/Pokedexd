@@ -6,4 +6,36 @@
     android:layout_height="match_parent"
     tools:context=".equipos.MisEquiposActivity">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:layout_editor_absoluteX="35dp"
+        tools:layout_editor_absoluteY="131dp">
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="139dp"
+            android:layout_height="39dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="@string/mis_equipos" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvMisEquipos"
+            android:layout_width="match_parent"
+            android:layout_height="586dp"
+            android:layout_marginStart="1dp"
+            android:layout_marginTop="7dp"
+            android:layout_marginEnd="1dp"
+            android:layout_marginBottom="1dp" />
+
+        <Button
+            android:id="@+id/btnCrearEquipo"
+            android:layout_width="170dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/crear_equipo" />
+    </LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

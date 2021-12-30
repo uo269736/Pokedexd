@@ -45,8 +45,13 @@ public class Pokemon implements Parcelable {
     }
 
     public Pokemon (String name, String url){
-        this.name=name;
-        this.url=url;
+        this.name = name;
+        this.url  = url;
+    }
+
+    public Pokemon (String name) {
+        this.name = name;
+        this.url  = "https://pokeapi.co/api/v2/pokemon/" + name;
     }
 
     public int getId() {
