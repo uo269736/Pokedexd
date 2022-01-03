@@ -16,11 +16,9 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.example.pokedexd.R;
 import com.example.pokedexd.equipos.CrearEquipoActivity;
-import com.example.pokedexd.equipos.MisEquiposActivity;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.zip.Inflater;
 
 import models.Pokemon;
 import models.database.Equipo;
@@ -52,6 +50,7 @@ public class MisEquiposAdapter extends RecyclerView.Adapter<MisEquiposAdapter.Vi
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(context, CrearEquipoActivity.class);
+                intent.putExtra("nombreEquipo", name);
                 context.startActivity(intent);
             }
         });
@@ -113,6 +112,11 @@ public class MisEquiposAdapter extends RecyclerView.Adapter<MisEquiposAdapter.Vi
     @Override
     public int getItemCount() {
         return misEquipos.size();
+    }
+
+    public void eliminarEquipo(Equipo equipo) {
+        misEquipos.remove(equipo);
+        notifyDataSetChanged();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {

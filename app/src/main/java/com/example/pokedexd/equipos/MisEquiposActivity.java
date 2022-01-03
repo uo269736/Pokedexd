@@ -1,11 +1,5 @@
 package com.example.pokedexd.equipos;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.DefaultItemAnimator;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
@@ -14,6 +8,13 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.DefaultItemAnimator;
+import androidx.recyclerview.widget.ItemTouchHelper;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.pokedexd.R;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -40,6 +41,7 @@ public class MisEquiposActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private Button btnCrearEquipo;
     private Context context;
+    private MisEquiposAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,6 +68,8 @@ public class MisEquiposActivity extends AppCompatActivity {
             }
         });
 
+        new ItemTouchHelper(itemTouchHelperCallback).attachToRecyclerView(recyclerView);
+
         misEquipos = new ArrayList<>();
         cargarEquipos();
     }
@@ -77,12 +81,12 @@ public class MisEquiposActivity extends AppCompatActivity {
             public void onComplete(@NonNull Task<DataSnapshot> task) {
                 if (task.isSuccessful()) {
                     Log.e("firebase", String.valueOf(task.getResult().getValue()));
-                    String nombreEquipo  = "";
+                    String nombreEquipo = "";
                     String nombrePokemon = "";
-                    String objeto        = "";
-                    String habilidad     = "";
-                    String ataques       = "";
-                    int pokemonId        =  0;
+                    String objeto = "";
+                    String habilidad = "";
+                    String ataques = "";
+                    int pokemonId = 0;
                     ArrayList<String> ataquesList = new ArrayList<>();
                     for (DataSnapshot equipo : task.getResult().getChildren()) {
                         nombreEquipo = equipo.getKey();
@@ -90,27 +94,27 @@ public class MisEquiposActivity extends AppCompatActivity {
                         List<Pokemon> pokemonList = new ArrayList<>();
                         for (DataSnapshot pokemon : task.getResult().child(nombreEquipo).getChildren()) {
                             nombrePokemon = pokemon.getKey();
-                            Pokemon p     = new Pokemon(nombrePokemon);
-                            Log.e("firebase, nombre pokemon",  String.valueOf(pokemon.getKey()));
+                            Pokemon p = new Pokemon(nombrePokemon);
+                            Log.e("firebase, nombre pokemon", String.valueOf(pokemon.getKey()));
                             for (DataSnapshot atributo : task.getResult().child(nombreEquipo).child(nombrePokemon).getChildren()) {
-                                if (atributo.getKey().equals("Ataques")){
-                                        ataques      = String.valueOf(task.getResult().child(nombreEquipo).child(nombrePokemon).child(atributo.getKey()).getValue());
-                                        String[] atq = ataques.replace("[", "").replace("]","").split(",");
-                                        ataquesList  = new ArrayList<String>(Arrays.asList(atq.clone()));
-                                        p.setAtaques(ataquesList);
-                                        Log.e("firebase, ataques", ataquesList.toString());
+                                if (atributo.getKey().equals("Ataques")) {
+                                    ataques = String.valueOf(task.getResult().child(nombreEquipo).child(nombrePokemon).child(atributo.getKey()).getValue());
+                                    String[] atq = ataques.replace("[", "").replace("]", "").split(",");
+                                    ataquesList = new ArrayList<String>(Arrays.asList(atq.clone()));
+                                    p.setAtaques(ataquesList);
+                                    Log.e("firebase, ataques", ataquesList.toString());
                                 } else if (atributo.getKey().equals("Objeto")) {
-                                        objeto       = String.valueOf(task.getResult().child(nombreEquipo).child(nombrePokemon).child(atributo.getKey()).getValue());
-                                        p.setObjeto(objeto);
-                                        Log.e("firebase, objeto", objeto);
+                                    objeto = String.valueOf(task.getResult().child(nombreEquipo).child(nombrePokemon).child(atributo.getKey()).getValue());
+                                    p.setObjeto(objeto);
+                                    Log.e("firebase, objeto", objeto);
                                 } else if (atributo.getKey().equals("Habilidad")) {
-                                        habilidad    = String.valueOf(task.getResult().child(nombreEquipo).child(nombrePokemon).child(atributo.getKey()).getValue());
-                                        p.setHabilidad(habilidad);
-                                        Log.e("firebase, habilidad", habilidad);
+                                    habilidad = String.valueOf(task.getResult().child(nombreEquipo).child(nombrePokemon).child(atributo.getKey()).getValue());
+                                    p.setHabilidad(habilidad);
+                                    Log.e("firebase, habilidad", habilidad);
                                 } else if (atributo.getKey().equals("PokemonId")) {
-                                        pokemonId    = Integer.parseInt(String.valueOf(task.getResult().child(nombreEquipo).child(nombrePokemon).child(atributo.getKey()).getValue()));
-                                        p.setId(pokemonId);
-                                        Log.e("firebase, pokemonId", Integer.toString(pokemonId));
+                                    pokemonId = Integer.parseInt(String.valueOf(task.getResult().child(nombreEquipo).child(nombrePokemon).child(atributo.getKey()).getValue()));
+                                    p.setId(pokemonId);
+                                    Log.e("firebase, pokemonId", Integer.toString(pokemonId));
                                 }
                             }
                             pokemonList.add(p);
@@ -118,7 +122,7 @@ public class MisEquiposActivity extends AppCompatActivity {
                         Equipo e = new Equipo(nombreEquipo, pokemonList);
                         misEquipos.add(e);
                     }
-                    MisEquiposAdapter adapter = new MisEquiposAdapter(context, misEquipos);
+                    adapter = new MisEquiposAdapter(context, misEquipos);
                     RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
                     recyclerView.setLayoutManager(layoutManager);
                     recyclerView.setItemAnimator(new DefaultItemAnimator());
@@ -126,6 +130,31 @@ public class MisEquiposActivity extends AppCompatActivity {
                 } else {
                     Toast.makeText(MisEquiposActivity.this, "No se pueden cargar los equipos", Toast.LENGTH_SHORT).show();
                     Log.e("firebase", "Error.");
+                }
+            }
+        });
+    }
+
+    ItemTouchHelper.SimpleCallback itemTouchHelperCallback = new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.RIGHT) {
+        @Override
+        public boolean onMove(RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder, RecyclerView.ViewHolder target) {
+            return false;
+        }
+
+        @Override
+        public void onSwiped(RecyclerView.ViewHolder viewHolder, int direction) {
+            eliminarEquipo(misEquipos.get(viewHolder.getAdapterPosition()));
+        }
+    };
+
+    private void eliminarEquipo(Equipo equipo) {
+        misEquipos.remove(equipo);
+        adapter.eliminarEquipo(equipo);
+        mDatabase.child("users").child(uid).child("Equipos").child(equipo.getNombre()).removeValue().addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                if (task.isSuccessful()){
+                    Log.e("firebase", "Se ha borrado el equipo correctamente " + equipo.getNombre());
                 }
             }
         });
