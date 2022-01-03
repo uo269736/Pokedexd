@@ -24,7 +24,7 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/boogaloo"
                 android:padding="10dp"
-                android:text="@string/btnEquipos"
+                android:text="@string/crear_equipo"
                 android:textAllCaps="true"
                 android:textColor="@color/white"
                 android:textSize="30sp" />
@@ -130,7 +130,8 @@
                 android:id="@+id/CrearEquipoRecListaEquipo"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_gravity="center_horizontal"               android:background="@drawable/borde_pantalla_recycler"
+                android:layout_gravity="center_horizontal"
+                android:background="@drawable/borde_pantalla_recycler"
                 android:padding="20dp" />
 
         </RelativeLayout>
