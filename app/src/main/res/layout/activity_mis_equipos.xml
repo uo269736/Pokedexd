@@ -1,41 +1,66 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".equipos.MisEquiposActivity">
+    tools:context=".equipos.MisEquiposActivity"
+    android:background="@drawable/fondopokedexcompleto">
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:orientation="vertical"
-        tools:layout_editor_absoluteX="35dp"
-        tools:layout_editor_absoluteY="131dp">
+        android:layout_margin="10dp">
 
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="139dp"
-            android:layout_height="39dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:text="@string/mis_equipos" />
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/boogaloo"
+                android:padding="10dp"
+                android:text="@string/mis_equipos"
+                android:textAllCaps="true"
+                android:textColor="@color/white"
+                android:textSize="30sp" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvMisEquipos"
             android:layout_width="match_parent"
-            android:layout_height="586dp"
-            android:layout_marginStart="1dp"
-            android:layout_marginTop="7dp"
-            android:layout_marginEnd="1dp"
-            android:layout_marginBottom="1dp" />
+            android:layout_height="match_parent"
+            android:layout_gravity="center_horizontal"
+            android:padding="20dp" />
 
-        <Button
-            android:id="@+id/btnCrearEquipo"
-            android:layout_width="170dp"
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="@string/crear_equipo" />
+            android:background="@drawable/borde_button_azu"
+            android:layout_margin="20dp"
+            android:layout_gravity="center">
+
+            <Button
+                android:id="@+id/btnCrearEquipo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="#00000000"
+                android:fontFamily="@font/baloo"
+                android:gravity="center"
+                android:text="@string/crear_equipo"
+                android:textColor="@color/white" />
+
+        </RelativeLayout>
+
     </LinearLayout>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
