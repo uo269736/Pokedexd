@@ -49,7 +49,7 @@ public class BuscarPokemonActivity extends AppCompatActivity {
         listaPokemonAdapter = new ListaPokemonAdapter(this);
         recyclerView.setAdapter(listaPokemonAdapter);
         recyclerView.setHasFixedSize(true);
-        GridLayoutManager layoutManager= new GridLayoutManager(this,3);
+        GridLayoutManager layoutManager = new GridLayoutManager(this,3);
         recyclerView.setLayoutManager(layoutManager);
 
         //detectar que hace scroll y al llegar al final obtener nuevos elementos
@@ -60,7 +60,7 @@ public class BuscarPokemonActivity extends AppCompatActivity {
 
                 if(dy > 0){
                     int visibleItemCount = layoutManager.getChildCount();
-                    int totalItemCount = layoutManager.getItemCount();;
+                    int totalItemCount = layoutManager.getItemCount();
                     int pastVisibleItems = layoutManager.findFirstVisibleItemPosition();
 
                     if(aptoParaCargar){

@@ -1,109 +1,189 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/CrearEquipo"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".equipos.CrearEquipoActivity">
+    android:id="@+id/CrearEquipo"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".equipos.CrearEquipoActivity"
+    android:background="@drawable/fondopokedexcompleto">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/CrearEquipoRecListaEquipo"
-        android:layout_width="332dp"
-        android:layout_height="475dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.493"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/CrearEquipoEtxBuscaPokemon"
-        app:layout_constraintVertical_bias="0.155" />
-
-    <Button
-        android:id="@+id/CrearEquipoBtnGuardar"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/GuardarEquipo"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.258"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/CrearEquipoRecListaEquipo"
-        app:layout_constraintVertical_bias="0.675" />
+        android:layout_margin="10dp"
+        android:orientation="vertical">
 
-    <Button
-        android:id="@+id/CrearEquipoBtnExportar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/ExportarEquipo"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.365"
-        app:layout_constraintStart_toEndOf="@+id/CrearEquipoBtnGuardar"
-        app:layout_constraintTop_toBottomOf="@+id/CrearEquipoRecListaEquipo"
-        app:layout_constraintVertical_bias="0.675" />
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp">
 
-    <EditText
-        android:id="@+id/CrearEquipoEtxBuscaPokemon"
-        android:layout_width="294dp"
-        android:layout_height="49dp"
-        android:ems="10"
-        android:hint="@string/NombrePokemon"
-        android:inputType="textPersonName"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.162"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/CrearEquipoTxtAñade"
-        app:layout_constraintVertical_bias="0.008" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/boogaloo"
+                android:padding="10dp"
+                android:text="@string/crear_equipo"
+                android:textAllCaps="true"
+                android:textColor="@color/white"
+                android:textSize="30sp" />
 
-    <EditText
-        android:id="@+id/editTextNombreEquipo"
-        android:layout_width="294dp"
-        android:layout_height="49dp"
-        android:ems="10"
-        android:hint="@string/NombredelEquipoHint"
-        android:inputType="textPersonName"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.162"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.043" />
+        </RelativeLayout>
 
-    <TextView
-        android:id="@+id/CrearEquipoTxtAñade"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/BuscaPokemonAñade"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.113"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.134" />
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp">
 
-    <ImageButton
-        android:id="@+id/CrearEquipoIbtAñade"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.404"
-        app:layout_constraintStart_toEndOf="@+id/CrearEquipoEtxBuscaPokemon"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.169"
-        app:srcCompat="@android:drawable/ic_input_add" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/boogaloo"
+                android:paddingBottom="2dp"
+                android:text="@string/NombredelEquipoHint"
+                android:textAllCaps="true"
+                android:textColor="@color/white"
+                android:textSize="15sp" />
 
-    <TextView
-        android:id="@+id/txtNombreDelEquipo"
-        android:layout_width="259dp"
-        android:layout_height="17dp"
-        android:text="@string/NombredelEquipoHint"
-        app:layout_constraintBottom_toTopOf="@+id/editTextNombreEquipo"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.125"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.333" />
+        </RelativeLayout>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/borde_edittext">
+
+            <EditText
+                android:id="@+id/editTextNombreEquipo"
+                android:layout_width="265dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="10dp"
+                android:backgroundTint="@color/white"
+                android:color="@color/white"
+                android:fontFamily="@font/baloo"
+                android:hint="@string/NombredelEquipoHint"
+                android:textColor="@color/white"
+                android:textColorHint="@color/white" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/boogaloo"
+                android:paddingBottom="2dp"
+                android:text="@string/IntroduceNombre"
+                android:textAllCaps="true"
+                android:textColor="@color/white"
+                android:textSize="15sp" />
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginBottom="10dp"
+            android:orientation="horizontal"
+            android:background="@drawable/borde_edittext">
+
+            <EditText
+                android:id="@+id/CrearEquipoEtxBuscaPokemon"
+                android:layout_marginLeft="10dp"
+                android:layout_width="250dp"
+                android:layout_height="match_parent"
+                android:hint="@string/NombrePokemon"
+                android:fontFamily="@font/baloo"
+                android:textColor="@color/white"
+                android:textColorHint="@color/white"
+                android:color="@color/white"
+                android:backgroundTint="@color/white"/>
+
+            <ImageButton
+                android:id="@+id/CrearEquipoIbtAñade"
+                android:layout_width="60dp"
+                android:layout_height="50dp"
+                android:layout_marginRight="15dp"
+                app:srcCompat="@drawable/anadir"
+                android:background="#00000000" />
+
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/CrearEquipoRecListaEquipo"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_horizontal"
+                android:background="@drawable/borde_pantalla_recycler"
+                android:padding="20dp" />
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:orientation="horizontal"
+            android:layout_gravity="center_horizontal">
+
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/borde_button_azu"
+                android:layout_margin="20dp"
+                android:layout_gravity="center">
+
+                <Button
+                    android:id="@+id/CrearEquipoBtnGuardar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="#00000000"
+                    android:fontFamily="@font/baloo"
+                    android:gravity="center"
+                    android:text="@string/GuardarEquipo"
+                    android:textColor="@color/white" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/borde_button_azu"
+                android:layout_margin="20dp">
+
+                <Button
+                    android:id="@+id/CrearEquipoBtnExportar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="#00000000"
+                    android:fontFamily="@font/baloo"
+                    android:gravity="center"
+                    android:text="@string/ExportarEquipo"
+                    android:textColor="@color/white" />
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+</ScrollView>

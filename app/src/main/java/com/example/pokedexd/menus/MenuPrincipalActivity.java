@@ -14,6 +14,7 @@ import android.widget.Toast;
 import com.example.pokedexd.equipos.CrearEquipoActivity;
 import com.example.pokedexd.R;
 import com.example.pokedexd.autenticacion.InicioSesionActivity;
+import com.example.pokedexd.equipos.MisEquiposActivity;
 import com.example.pokedexd.ligas.ActivityAuxLigas;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -46,12 +47,12 @@ public class MenuPrincipalActivity extends AppCompatActivity {
         setContentView(R.layout.activity_menu_principal);
 
         //Inicializar variables globales.
-        btnMenuBuscador = (Button) findViewById(R.id.MenuBtnBuscador);
-        btnMenuEquipo = (Button) findViewById(R.id.MenuBtnEquipo);
-        btnMenuLiga = (Button) findViewById(R.id.MenuBtnLiga);
+        btnMenuBuscador  = (Button) findViewById(R.id.MenuBtnBuscador);
+        btnMenuEquipo    = (Button) findViewById(R.id.MenuBtnEquipo);
+        btnMenuLiga      = (Button) findViewById(R.id.MenuBtnLiga);
         btnIniciarSesion = (Button) findViewById(R.id.menuBtnInicioSesion);
-        btnCerrarSesion = (Button) findViewById(R.id.btnCerrarSesion);
-        txtBienvenida = (TextView) findViewById(R.id.txtBienvenidaMenuPrincipal);
+        btnCerrarSesion  = (Button) findViewById(R.id.btnCerrarSesion);
+        txtBienvenida    = (TextView) findViewById(R.id.txtBienvenidaMenuPrincipal);
 
         FirebaseDatabase database = FirebaseDatabase.getInstance("https://pokedexd-a8a61-default-rtdb.europe-west1.firebasedatabase.app/");
         mDatabase = database.getReference();
@@ -106,7 +107,7 @@ public class MenuPrincipalActivity extends AppCompatActivity {
                     intent = new Intent(MenuPrincipalActivity.this, InicioSesionActivity.class);
                     Toast.makeText(MenuPrincipalActivity.this, "Se ha de iniciar sesión para Crear un Equipo", Toast.LENGTH_SHORT).show();
                 } else {
-                    intent = new Intent(MenuPrincipalActivity.this, CrearEquipoActivity.class);
+                    intent = new Intent(MenuPrincipalActivity.this, MisEquiposActivity.class);
                 }
                 startActivity(intent);
             }
