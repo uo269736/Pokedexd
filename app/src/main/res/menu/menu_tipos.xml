@@ -2,11 +2,15 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/btInflige"
-        android:title="@string/btInflige" />
+        android:id="@+id/btEficaz"
+        android:title="@string/btEficaz" />
 
     <item
-        android:id="@+id/btRecibe"
-        android:title="@string/btRecibe"/>
+        android:id="@+id/btDebil"
+        android:title="@string/btDebil"/>
+
+    <item
+        android:id="@+id/btInmune"
+        android:title="@string/btInmune"/>
 
 </menu>

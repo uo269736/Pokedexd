@@ -43,6 +43,9 @@ public class BuscarTiposActivity extends AppCompatActivity {
     private Spinner spTipos;
     private Retrofit retrofit;
     private String tipoSeleccionado;
+    private RecyclerView recyclerView;
+    private ListaTiposAdapter listaTiposAdapter;
+    private BottomNavigationView nav;
 
     private static final int NUM_TIPOS = 18;
 
@@ -65,6 +68,14 @@ public class BuscarTiposActivity extends AppCompatActivity {
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
+
+        listaTiposAdapter = new ListaTiposAdapter(this);
+        recyclerView = findViewById(R.id.recycler_tipos);
+        recyclerView.setAdapter(listaTiposAdapter);
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        nav = findViewById(R.id.nav_view);
+
         BottomNavigationView navView = findViewById(R.id.nav_view);
         navView.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
         rellenarSpinner();
@@ -86,6 +97,7 @@ public class BuscarTiposActivity extends AppCompatActivity {
     private void accionSpinner() {
         if (!spTipos.getSelectedItem().toString().equals("")) {
             this.tipoSeleccionado = spTipos.getSelectedItem().toString().toLowerCase();
+            nav.setSelectedItemId(R.id.btDebil);
         }
 
     }
@@ -103,7 +115,7 @@ public class BuscarTiposActivity extends AppCompatActivity {
                     ArrayList<String> nombres = new ArrayList<>();
                     nombres.add("");
                     for (Tipo t : tipos) {
-                        String tipo = traducirTipoEspañol(t.getName());
+                        String tipo = traducirTipo(t.getName());
                         if (tipo != "")
                             //nombres.add(tipo.substring(0, 1).toUpperCase() + tipo.substring(1));
                             nombres.add(tipo);
@@ -122,7 +134,7 @@ public class BuscarTiposActivity extends AppCompatActivity {
         });
     }
 
-    private String traducirTipoEspañol(String tipo) {
+    private String traducirTipo(String tipo) {
         InputStream file = null;
         InputStreamReader reader = null;
         BufferedReader bufferedReader = null;
@@ -135,8 +147,12 @@ public class BuscarTiposActivity extends AppCompatActivity {
             while ((line = bufferedReader.readLine()) != null) {
                 String[] datos = line.split(";");
                 if (datos != null) {
-                    if (datos[1].toLowerCase().equals(tipo.toLowerCase()) || datos[2].toLowerCase().equals(tipo.toLowerCase())) {
+                    if (datos[1].toLowerCase().equals(tipo.toLowerCase())) {
                         return datos[2]; //es el nombre en español
+                    }
+
+                    if(datos[2].toLowerCase().equals((tipo.toLowerCase()))) {
+                        return datos[1];
                     }
                 }
             }
@@ -162,17 +178,18 @@ public class BuscarTiposActivity extends AppCompatActivity {
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             if (!spTipos.getSelectedItem().toString().equals("")) {
                 switch (item.getItemId()) {
-                    case R.id.btInflige:
-                        TiposFragment debil = new TiposFragment().
-                                newInstance(tipoSeleccionado, INFLIGE);
-                        getSupportFragmentManager().beginTransaction().replace(R.id.frameFragments, debil).commit();
+                    case R.id.btDebil:
+                        llenarListas("debil");
                         return true;
 
-                    case R.id.btRecibe:
-                        TiposFragment eficaz = new TiposFragment()
-                                .newInstance(tipoSeleccionado, RECIBE);
-                        getSupportFragmentManager().beginTransaction().replace(R.id.frameFragments, eficaz).commit();
+                    case R.id.btEficaz:
+                        llenarListas("eficaz");
                         return true;
+
+                    case R.id.btInmune:
+                        llenarListas("inmune");
+                        return true;
+
                     default:
                         throw new IllegalStateException("Unexpected value: " + item.getItemId());
                 }
@@ -181,4 +198,40 @@ public class BuscarTiposActivity extends AppCompatActivity {
             return false;
         }
     };
+
+    private void llenarListas(String fortaleza) {
+        PokeapiService service = retrofit.create(PokeapiService.class);
+        Call<TipoRespuestaIndividual> tipoRespuestaIndividualCall = service.obtenerDebilidades(tipoSeleccionado);
+        tipoRespuestaIndividualCall.enqueue(new Callback<TipoRespuestaIndividual>() {
+            @Override
+            public void onResponse(Call<TipoRespuestaIndividual> call, Response<TipoRespuestaIndividual> response) {
+                if (response.isSuccessful()) {
+                    TipoRespuestaIndividual tipoRespuestaIndividual = response.body();
+                    List<String> mostrar = new ArrayList<>();
+                    Relacion r = tipoRespuestaIndividual.getDamage_relations();
+                    switch(fortaleza) {
+                        case "debil":
+                            for(Tipo t : r.getHalf_damage_to())
+                                mostrar.add(traducirTipo(t.getName()));
+                            break;
+                        case "eficaz":
+                            for(Tipo t : r.getDouble_damage_to())
+                                mostrar.add(traducirTipo(t.getName()));
+                            break;
+                        case "inmune":
+                            for(Tipo t : r.getNo_damage_to())
+                                mostrar.add(traducirTipo(t.getName()));
+                            break;
+                    }
+
+                listaTiposAdapter.addListaTipos(mostrar);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<TipoRespuestaIndividual> call, Throwable t) {
+                Log.e(TAG, "onFailure: " + t.getMessage());
+            }
+        });
+    }
 }

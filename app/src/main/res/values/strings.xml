@@ -12,11 +12,12 @@
 
 
     <!-- botones pa cambiar de fragment -->
-    <string name="btInflige">Inflige</string>
-    <string name="btRecibe">Recibe</string>
-    <string name="btx2">x2</string>
-    <string name="btx12">x1/2</string>
+    <string name="btEficaz">Eficaz</string>
+    <string name="btDebil">Débil</string>
+    <string name="btInmune">Inmune</string>
     <string name="btx0">x0</string>
+    <string name="btx2">x0</string>
+    <string name="btx12">x0</string>
     <string name="BuscaPokemonAñade">Busca un pokemon y añadelo al equipo</string>
     <string name="GuardarEquipo">Guardar</string>
     <string name="ExportarEquipo">Exportar</string>
