@@ -17,6 +17,7 @@
     <style name="Theme.Pokedexd.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
+        <item name="colorPrimaryVariant">@color/rojo_poke</item>
     </style>
 
     <style name="Theme.Pokedexd.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />

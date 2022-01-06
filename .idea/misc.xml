@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/AndroidProjects/PokeApp/app/src/main/res/drawable-v24/borde_spinner.xml" value="0.17456140350877192" />
         <entry key="..\:/AndroidProjects/PokeApp/app/src/main/res/drawable/borde_button.xml" value="0.3223684210526316" />
         <entry key="..\:/AndroidProjects/PokeApp/app/src/main/res/drawable/borde_button_ama.xml" value="0.3223684210526316" />
         <entry key="..\:/AndroidProjects/PokeApp/app/src/main/res/drawable/borde_button_azu.xml" value="0.1868421052631579" />
@@ -11,6 +12,8 @@
         <entry key="..\:/AndroidProjects/PokeApp/app/src/main/res/drawable/borde_equipo.xml" value="0.18640350877192982" />
         <entry key="..\:/AndroidProjects/PokeApp/app/src/main/res/drawable/borde_pantalla_recycler.xml" value="0.1868421052631579" />
         <entry key="..\:/AndroidProjects/PokeApp/app/src/main/res/drawable/borde_pantalla_recyclwe.xml" value="0.1868421052631579" />
+        <entry key="..\:/AndroidProjects/PokeApp/app/src/main/res/drawable/color_navbar.xml" value="0.3223684210526316" />
+        <entry key="..\:/AndroidProjects/PokeApp/app/src/main/res/drawable/f.xml" value="0.24814814814814815" />
         <entry key="..\:/AndroidProjects/PokeApp/app/src/main/res/drawable/my_border.xml" value="0.3828125" />
         <entry key="..\:/AndroidProjects/PokeApp/app/src/main/res/layout/activity_add_pokemon_equipo.xml" value="0.3604014598540146" />
         <entry key="..\:/AndroidProjects/PokeApp/app/src/main/res/layout/activity_buscar_ataques.xml" value="0.20520833333333333" />
@@ -24,7 +27,7 @@
         <entry key="..\:/AndroidProjects/PokeApp/app/src/main/res/layout/activity_menu_principal.xml" value="0.33" />
         <entry key="..\:/AndroidProjects/PokeApp/app/src/main/res/layout/activity_menu_principal_sesion_iniciada.xml" value="0.20572916666666666" />
         <entry key="..\:/AndroidProjects/PokeApp/app/src/main/res/layout/activity_mis_equipos.xml" value="0.17324561403508773" />
-        <entry key="..\:/AndroidProjects/PokeApp/app/src/main/res/layout/activity_tipos.xml" value="0.20572916666666666" />
+        <entry key="..\:/AndroidProjects/PokeApp/app/src/main/res/layout/activity_tipos.xml" value="0.5" />
         <entry key="..\:/AndroidProjects/PokeApp/app/src/main/res/layout/fragment_tipos.xml" value="0.20572916666666666" />
         <entry key="..\:/AndroidProjects/PokeApp/app/src/main/res/layout/item_ataque.xml" value="0.25" />
         <entry key="..\:/AndroidProjects/PokeApp/app/src/main/res/layout/item_equipo.xml" value="0.33" />
@@ -38,29 +41,11 @@
         <entry key="..\:/Users/Sergio/Pokedexd/app/src/main/res/layout/activity_aux.xml" value="0.19375" />
         <entry key="..\:/Users/Sergio/Pokedexd/app/src/main/res/layout/activity_aux_ligas.xml" value="0.19375" />
         <entry key="..\:/Users/Sergio/Pokedexd/app/src/main/res/layout/activity_buscar_pokemon.xml" value="0.2265625" />
-        <entry key="..\:/Users/Sergio/Pokedexd/app/src/main/res/layout/activity_crear_equipo.xml" value="0.36666666666666664" />
-        <entry key="..\:/Users/Sergio/Pokedexd/app/src/main/res/layout/activity_inicio_sesion.xml" value="0.36666666666666664" />
-        <entry key="..\:/Users/Sergio/Pokedexd/app/src/main/res/layout/activity_main.xml" value="0.32155797101449274" />
         <entry key="..\:/Users/Sergio/Pokedexd/app/src/main/res/layout/activity_inicio_sesion.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Sergio/Pokedexd/app/src/main/res/layout/activity_menu_buscador.xml" value="0.25" />
-        <entry key="..\:/Users/Sergio/Pokedexd/app/src/main/res/layout/activity_menu_principal.xml" value="0.36666666666666664" />
-        <entry key="..\:/Users/Sergio/Pokedexd/app/src/main/res/layout/activity_mis_equipos.xml" value="0.3183876811594203" />
         <entry key="..\:/Users/Sergio/Pokedexd/app/src/main/res/layout/activity_pantalla_inicial.xml" value="0.25" />
-        <entry key="..\:/Users/Sergio/Pokedexd/app/src/main/res/layout/activity_registro.xml" value="0.22395833333333334" />
-        <entry key="..\:/Users/Sergio/Pokedexd/app/src/main/res/layout/content_scrolling.xml" value="0.35260416666666666" />
-        <entry key="..\:/Users/Sergio/Pokedexd/app/src/main/res/layout/item_ataque.xml" value="0.3138586956521739" />
-        <entry key="..\:/Users/Sergio/Pokedexd/app/src/main/res/layout/item_equipo.xml" value="0.33" />
-        <entry key="..\:/Users/Sergio/Pokedexd/app/src/main/res/layout/item_habilidad.xml" value="0.3138586956521739" />
-        <entry key="..\:/Users/Sergio/Pokedexd/app/src/main/res/layout/item_objeto.xml" value="0.3138586956521739" />
         <entry key="..\:/Users/Sergio/Pokedexd/app/src/main/res/layout/item_pokemon.xml" value="0.2265625" />
-        <entry key="..\:/Users/Sergio/Pokedexd/app/src/main/res/layout/item_pokemon_equipo.xml" value="0.36666666666666664" />
-        <entry key="..\:/Users/Sergio/Pokedexd/app/src/main/res/layout/item_tipo.xml" value="0.36186594202898553" />
         <entry key="..\:/Users/Sergio/Pokedexd/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.22135416666666666" />
-        <entry key="..\:/Users/danif/AndroidStudioProjects/Pokedexd/app/src/main/res/layout/activity_mis_equipos.xml" value="0.25416666666666665" />
-        <entry key="..\:/Users/danif/AndroidStudioProjects/Pokedexd/app/src/main/res/layout/activity_tipos.xml" value="0.12360688956433637" />
-        <entry key="..\:/Users/danif/AndroidStudioProjects/Pokedexd/app/src/main/res/layout/fragment_tipos.xml" value="0.25416666666666665" />
-        <entry key="..\:/Users/danif/AndroidStudioProjects/Pokedexd/app/src/main/res/layout/item_ataque.xml" value="0.12360688956433637" />
-        <entry key="..\:/Users/danif/AndroidStudioProjects/Pokedexd/app/src/main/res/layout/item_pokemon_equipo.xml" value="0.12360688956433637" />
       </map>
     </option>
   </component>

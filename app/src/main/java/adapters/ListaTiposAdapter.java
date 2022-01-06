@@ -5,6 +5,7 @@ import android.text.Layout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -12,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.pokedexd.R;
 
+import java.text.Normalizer;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -35,7 +37,13 @@ public class ListaTiposAdapter extends RecyclerView.Adapter<ListaTiposAdapter.Vi
     @Override
     public void onBindViewHolder(@NonNull ListaTiposAdapter.ViewHolder holder, int position) {
         String nombreTipo = dataset.get(position);
-        holder.nombreTipo.setText(nombreTipo);
+        if(nombreTipo!=null){
+            String tipoString= cleanString(nombreTipo);
+            int drawableID = context.getResources().getIdentifier("tipo_"+tipoString.toLowerCase(), "drawable", context.getPackageName());
+            holder.imagenTipo.setBackground(context.getResources().getDrawable(drawableID));
+        }
+        else
+            holder.imagenTipo.setBackground(context.getResources().getDrawable(R.drawable.tipo_indefinido));
     }
 
     @Override
@@ -45,15 +53,17 @@ public class ListaTiposAdapter extends RecyclerView.Adapter<ListaTiposAdapter.Vi
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
-        private TextView nombreTipo;
+        private ImageView imagenTipo;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            nombreTipo = itemView.findViewById(R.id.nombreTipo);
+
+            imagenTipo = (ImageView) itemView.findViewById(R.id.fotoTipo);
         }
     }
 
     public void addListaTipos(List<String> nombresTipos) {
+        dataset.clear();
         dataset.addAll(nombresTipos);
         notifyDataSetChanged();
     }
@@ -61,5 +71,11 @@ public class ListaTiposAdapter extends RecyclerView.Adapter<ListaTiposAdapter.Vi
     public void removeListaTipos() {
         dataset.clear();
         notifyDataSetChanged();
+    }
+
+    public static String cleanString(String texto) {
+        texto = Normalizer.normalize(texto, Normalizer.Form.NFD);
+        texto = texto.replaceAll("[\\p{InCombiningDiacriticalMarks}]", "");
+        return texto;
     }
 }

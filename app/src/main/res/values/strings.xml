@@ -14,7 +14,7 @@
     <!-- botones pa cambiar de fragment -->
     <string name="btEficaz">Eficaz</string>
     <string name="btDebil">Débil</string>
-    <string name="btInmune">Inmune</string>
+    <string name="btInmune">No afecta a</string>
     <string name="btx0">x0</string>
     <string name="btx2">x0</string>
     <string name="btx12">x0</string>
@@ -62,5 +62,6 @@
     <string name="msg_equipo_exportar">Se ha copiado el equipo al portapapeles</string>
     <string name="msg_ataque_no_encontrado">El ataque no ha sido encontrado</string>
     <string name="msg_ataques_no_encontrados">Uno o más ataques no han sido encontrados</string>
+    <string name="txEscogeTipo">Escoge un tipo:</string>
 
 </resources>

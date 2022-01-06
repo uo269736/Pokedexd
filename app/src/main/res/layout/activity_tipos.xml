@@ -4,53 +4,61 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".buscadores.BuscarTiposActivity">
+    tools:context=".buscadores.BuscarTiposActivity"
+    android:background="@drawable/fondopokedexcompleto">
 
-    <Spinner
-        android:id="@+id/spTipos"
-        android:layout_width="283dp"
-        android:layout_height="49dp"
-        android:layout_marginTop="100dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/txTipo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="64dp"
-        android:layout_marginLeft="64dp"
-        android:layout_marginTop="72dp"
-        android:text="Escoge un tipo:"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/nav_view"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/design_default_color_primary"
-        app:layout_constraintBottom_toTopOf="@+id/frameFragments"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:menu="@menu/menu_tipos"/>
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_margin="10dp">
 
-    <FrameLayout
-        android:id="@+id/frameFragments"
-        android:layout_width="match_parent"
-        android:layout_height="489dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+        <TextView
+            android:id="@+id/txTipo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/boogaloo"
+            android:padding="10dp"
+            android:text="@string/txEscogeTipo"
+            android:textAllCaps="true"
+            android:textColor="@color/white"
+            android:textSize="30sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-        <androidx.recyclerview.widget.RecyclerView
+        <Spinner
+            android:id="@+id/spTipos"
+            style="@android:style/Widget.DeviceDefault.Light.Spinner"
+            android:layout_width="200dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:layout_marginBottom="15dp"
+            android:background="@drawable/borde_spinner"
+            android:fontFamily="@font/baloo"
+            android:textAlignment="center"
+            android:textColor="@color/white" />
+
+
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/nav_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/borde_button_ama"
+            android:textAlignment="center"
+            app:itemHorizontalTranslationEnabled="false"
+            app:itemIconTint="@color/amarillo_poke"
+            app:itemTextColor="@drawable/color_navbar"
+            app:menu="@menu/menu_tipos" />
+
+    <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_tipos"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_margin="10dp"
+        android:background="@drawable/borde_pantalla_recycler"
+        android:padding="10dp" />
 
-
-    </FrameLayout>
-
+</LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

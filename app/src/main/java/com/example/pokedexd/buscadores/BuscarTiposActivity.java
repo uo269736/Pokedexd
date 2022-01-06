@@ -23,6 +23,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 import adapters.ListaTiposAdapter;
 import models.PokemonRespuesta;
@@ -58,11 +59,6 @@ public class BuscarTiposActivity extends AppCompatActivity {
         setContentView(R.layout.activity_tipos);
 
         spTipos = findViewById(R.id.spTipos);
-        /*recyclerView = findViewById(R.id.recycler_tipos);
-        listaTiposAdapter = new ListaTiposAdapter(this);
-        recyclerView.setAdapter(listaTiposAdapter);
-        recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));*/
         retrofit = new Retrofit.Builder()
                 .baseUrl("https://pokeapi.co/api/v2/")
                 .addConverterFactory(GsonConverterFactory.create())
@@ -176,24 +172,27 @@ public class BuscarTiposActivity extends AppCompatActivity {
 
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-            if (!spTipos.getSelectedItem().toString().equals("")) {
-                switch (item.getItemId()) {
-                    case R.id.btDebil:
-                        llenarListas("debil");
-                        return true;
+            if(spTipos!=null && spTipos.getSelectedItem()!=null) {
+                if (!spTipos.getSelectedItem().toString().equals("")) {
+                    switch (item.getItemId()) {
+                        case R.id.btDebil:
 
-                    case R.id.btEficaz:
-                        llenarListas("eficaz");
-                        return true;
+                            llenarListas("debil");
+                            return true;
 
-                    case R.id.btInmune:
-                        llenarListas("inmune");
-                        return true;
+                        case R.id.btEficaz:
+                            llenarListas("eficaz");
+                            return true;
 
-                    default:
-                        throw new IllegalStateException("Unexpected value: " + item.getItemId());
+                        case R.id.btInmune:
+                            llenarListas("inmune");
+                            return true;
+
+                        default:
+                            throw new IllegalStateException("Unexpected value: " + item.getItemId());
+                    }
+
                 }
-
             }
             return false;
         }
@@ -201,7 +200,7 @@ public class BuscarTiposActivity extends AppCompatActivity {
 
     private void llenarListas(String fortaleza) {
         PokeapiService service = retrofit.create(PokeapiService.class);
-        Call<TipoRespuestaIndividual> tipoRespuestaIndividualCall = service.obtenerDebilidades(tipoSeleccionado);
+        Call<TipoRespuestaIndividual> tipoRespuestaIndividualCall = service.obtenerDebilidades(traducirTipo(tipoSeleccionado).toLowerCase());
         tipoRespuestaIndividualCall.enqueue(new Callback<TipoRespuestaIndividual>() {
             @Override
             public void onResponse(Call<TipoRespuestaIndividual> call, Response<TipoRespuestaIndividual> response) {

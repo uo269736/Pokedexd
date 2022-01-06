@@ -3,14 +3,20 @@
 
     <item
         android:id="@+id/btEficaz"
-        android:title="@string/btEficaz" />
+        android:title="@string/btEficaz"
+        android:fontFamily="@font/baloo"
+        android:textColor="@color/white"/>
 
     <item
         android:id="@+id/btDebil"
-        android:title="@string/btDebil"/>
+        android:title="@string/btDebil"
+        android:fontFamily="@font/baloo"
+        android:textColor="@color/white"/>
 
     <item
         android:id="@+id/btInmune"
-        android:title="@string/btInmune"/>
+        android:title="@string/btInmune"
+        android:fontFamily="@font/baloo"
+        android:textColor="@color/white"/>
 
 </menu>
