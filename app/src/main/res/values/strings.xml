@@ -63,5 +63,7 @@
     <string name="msg_ataque_no_encontrado">El ataque no ha sido encontrado</string>
     <string name="msg_ataques_no_encontrados">Uno o más ataques no han sido encontrados</string>
     <string name="txEscogeTipo">Escoge un tipo:</string>
+    <string name="btPerfil">Perfil</string>
+    <string name="btnPerfil">Perfil</string>
 
 </resources>

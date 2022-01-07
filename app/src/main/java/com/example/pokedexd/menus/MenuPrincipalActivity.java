@@ -33,7 +33,6 @@ public class MenuPrincipalActivity extends AppCompatActivity {
 
     private Button btnMenuBuscador;
     private Button btnMenuEquipo;
-    private Button btnMenuLiga;
     private Button btnIniciarSesion;
     private Button btnCerrarSesion;
 
@@ -49,7 +48,6 @@ public class MenuPrincipalActivity extends AppCompatActivity {
         //Inicializar variables globales.
         btnMenuBuscador  = (Button) findViewById(R.id.MenuBtnBuscador);
         btnMenuEquipo    = (Button) findViewById(R.id.MenuBtnEquipo);
-        btnMenuLiga      = (Button) findViewById(R.id.MenuBtnLiga);
         btnIniciarSesion = (Button) findViewById(R.id.menuBtnInicioSesion);
         btnCerrarSesion  = (Button) findViewById(R.id.btnCerrarSesion);
         txtBienvenida    = (TextView) findViewById(R.id.txtBienvenidaMenuPrincipal);
@@ -108,20 +106,6 @@ public class MenuPrincipalActivity extends AppCompatActivity {
                     Toast.makeText(MenuPrincipalActivity.this, "Se ha de iniciar sesión para Crear un Equipo", Toast.LENGTH_SHORT).show();
                 } else {
                     intent = new Intent(MenuPrincipalActivity.this, MisEquiposActivity.class);
-                }
-                startActivity(intent);
-            }
-        });
-
-        btnMenuLiga.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent;
-                if (user == null) {
-                    intent = new Intent(MenuPrincipalActivity.this, InicioSesionActivity.class);
-                    Toast.makeText(MenuPrincipalActivity.this, "Se ha de iniciar sesión para Crear una Liga", Toast.LENGTH_SHORT).show();
-                } else {
-                    intent = new Intent(MenuPrincipalActivity.this, ActivityAuxLigas.class);
                 }
                 startActivity(intent);
             }
