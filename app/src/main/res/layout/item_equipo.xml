@@ -18,11 +18,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
 
-        <Button
-            android:id="@+id/btnEditEquipo"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="#00000000" />
+            <Button
+                android:id="@+id/btnEditEquipo"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#00000000"
+                tools:ignore="SpeakableTextPresentCheck" />
 
         <TextView
             android:id="@+id/txtNombreEquipo"
@@ -34,54 +35,54 @@
             android:textAllCaps="true"
             android:textColor="@color/white" />
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
 
-            <ImageView
-                android:id="@+id/pokemonView1"
-                android:layout_width="96dp"
-                android:layout_height="96dp"
-                android:layout_weight="1"
-                tools:srcCompat="@tools:sample/avatars" />
+                <ImageView
+                    android:id="@+id/pokemonView1"
+                    android:layout_width="96dp"
+                    android:layout_height="96dp"
+                    android:layout_weight="1"
+                    tools:srcCompat="@tools:sample/avatars" />
 
-            <ImageView
-                android:id="@+id/pokemonView2"
-                android:layout_width="96dp"
-                android:layout_height="96dp"
-                android:layout_weight="1"
-                tools:srcCompat="@tools:sample/avatars" />
+                <ImageView
+                    android:id="@+id/pokemonView2"
+                    android:layout_width="96dp"
+                    android:layout_height="96dp"
+                    android:layout_weight="1"
+                    tools:srcCompat="@tools:sample/avatars" />
 
-            <ImageView
-                android:id="@+id/pokemonView3"
-                android:layout_width="96dp"
-                android:layout_height="96dp"
-                android:layout_weight="1"
-                tools:srcCompat="@tools:sample/avatars" />
+                <ImageView
+                    android:id="@+id/pokemonView3"
+                    android:layout_width="96dp"
+                    android:layout_height="96dp"
+                    android:layout_weight="1"
+                    tools:srcCompat="@tools:sample/avatars" />
 
-            <ImageView
-                android:id="@+id/pokemonView4"
-                android:layout_width="96dp"
-                android:layout_height="96dp"
-                android:layout_weight="1"
-                tools:srcCompat="@tools:sample/avatars" />
+                <ImageView
+                    android:id="@+id/pokemonView4"
+                    android:layout_width="96dp"
+                    android:layout_height="96dp"
+                    android:layout_weight="1"
+                    tools:srcCompat="@tools:sample/avatars" />
 
-            <ImageView
-                android:id="@+id/pokemonView5"
-                android:layout_width="96dp"
-                android:layout_height="96dp"
-                android:layout_weight="1"
-                tools:srcCompat="@tools:sample/avatars" />
+                <ImageView
+                    android:id="@+id/pokemonView5"
+                    android:layout_width="96dp"
+                    android:layout_height="96dp"
+                    android:layout_weight="1"
+                    tools:srcCompat="@tools:sample/avatars" />
 
-            <ImageView
-                android:id="@+id/pokemonView6"
-                android:layout_width="96dp"
-                android:layout_height="96dp"
-                android:layout_weight="1"
-                tools:srcCompat="@tools:sample/avatars" />
+                <ImageView
+                    android:id="@+id/pokemonView6"
+                    android:layout_width="96dp"
+                    android:layout_height="96dp"
+                    android:layout_weight="1"
+                    tools:srcCompat="@tools:sample/avatars" />
 
-        </LinearLayout>
+            </LinearLayout>
 
         </RelativeLayout>
     </LinearLayout>

@@ -1,8 +1,5 @@
 package com.example.pokedexd.autenticacion;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -10,6 +7,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.pokedexd.R;
 import com.example.pokedexd.menus.MenuPrincipalActivity;
@@ -44,10 +44,9 @@ public class InicioSesionActivity extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
 
-        editTextEmail = findViewById(R.id.editTextEmailIniciarSesion);
+        editTextEmail    = findViewById(R.id.editTextEmailIniciarSesion);
         editTextPassword = findViewById(R.id.editTextContraseñaIniciarSesion);
-
-        btnNuevoUsuario = findViewById(R.id.btnRegistroActivity);
+        btnNuevoUsuario  = findViewById(R.id.btnRegistroActivity);
         btnNuevoUsuario.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

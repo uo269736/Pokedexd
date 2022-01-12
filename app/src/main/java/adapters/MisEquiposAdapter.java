@@ -51,6 +51,7 @@ public class MisEquiposAdapter extends RecyclerView.Adapter<MisEquiposAdapter.Vi
             public void onClick(View view) {
                 Intent intent = new Intent(context, CrearEquipoActivity.class);
                 intent.putExtra("nombreEquipo", name);
+                intent.putExtra("isEdit", true);
                 context.startActivity(intent);
             }
         });
