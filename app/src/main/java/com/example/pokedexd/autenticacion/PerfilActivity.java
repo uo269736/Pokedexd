@@ -34,7 +34,6 @@ public class PerfilActivity extends AppCompatActivity {
     private Button   btnCerrarSesion;
     private Button   btnEditar;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
