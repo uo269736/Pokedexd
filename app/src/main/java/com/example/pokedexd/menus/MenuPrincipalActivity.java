@@ -47,7 +47,7 @@ public class MenuPrincipalActivity extends AppCompatActivity {
         FirebaseUser user = mAuth.getCurrentUser();
 
         if (user == null) {
-            btnSesion.setText("Iniciar sesión");
+            btnSesion.setText("Login");
             btnSesion.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
