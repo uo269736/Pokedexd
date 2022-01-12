@@ -3,6 +3,8 @@ package com.example.pokedexd.equipos;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.PorterDuff;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -57,6 +59,15 @@ public class MisEquiposActivity extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
 
         uid = mAuth.getCurrentUser().getUid();
+
+        //Boton para ir hacia atrás
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        final Drawable upArrow = getResources().getDrawable(R.drawable.ic_baseline_arrow_back_24);
+        upArrow.setColorFilter(getResources().getColor(R.color.black), PorterDuff.Mode.SRC_ATOP);
+        getSupportActionBar().setHomeAsUpIndicator(upArrow);
+        getSupportActionBar().setTitle("");
+        Drawable d=getResources().getDrawable(R.drawable.action_bar);
+        getSupportActionBar().setBackgroundDrawable(d);
 
         btnCrearEquipo = (Button) findViewById(R.id.btnCrearEquipo);
 

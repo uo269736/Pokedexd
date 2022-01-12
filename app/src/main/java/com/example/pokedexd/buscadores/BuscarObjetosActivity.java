@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.graphics.PorterDuff;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -79,6 +81,15 @@ public class BuscarObjetosActivity extends AppCompatActivity {
                 }
             }
         });
+
+        //Boton para ir hacia atrás
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        final Drawable upArrow = getResources().getDrawable(R.drawable.ic_baseline_arrow_back_24);
+        upArrow.setColorFilter(getResources().getColor(R.color.black), PorterDuff.Mode.SRC_ATOP);
+        getSupportActionBar().setHomeAsUpIndicator(upArrow);
+        getSupportActionBar().setTitle("");
+        Drawable d=getResources().getDrawable(R.drawable.action_bar);
+        getSupportActionBar().setBackgroundDrawable(d);
 
         botonBuscar = (ImageButton) findViewById(R.id.ObjetoIbtBuscar);
         botonBuscar.setOnClickListener(new View.OnClickListener() {

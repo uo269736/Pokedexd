@@ -12,38 +12,47 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.Pokedexd.NoActionBar"
+        android:theme="@style/Theme.Pokedexd"
         android:usesCleartextTraffic="true">
         <activity
             android:name=".ligas.ActivityAuxLigas"
             android:exported="true" />
         <activity
             android:name=".equipos.CrearEquipoActivity"
-            android:exported="true" />
+            android:exported="true"
+            android:parentActivityName=".equipos.MisEquiposActivity" />
         <activity
             android:name=".equipos.AddPokemonEquipoActivity"
-            android:exported="true" />
+            android:exported="true"
+            android:parentActivityName=".equipos.CrearEquipoActivity"/>
         <activity
             android:name=".buscadores.BuscarAtaquesActivity"
-            android:exported="true" />
+            android:exported="true"
+            android:parentActivityName=".menus.MenuBuscadorActivity"/>
         <activity
             android:name=".autenticacion.InicioSesionActivity"
-            android:exported="true" />
+            android:exported="true"
+            android:parentActivityName=".menus.MenuPrincipalActivity"/>
         <activity
             android:name=".autenticacion.RegistroActivity"
-            android:exported="true" />
+            android:exported="true"
+            android:parentActivityName=".menus.MenuPrincipalActivity"/>
         <activity
             android:name=".buscadores.BuscarObjetosActivity"
-            android:exported="true" />
+            android:exported="true"
+            android:parentActivityName=".menus.MenuBuscadorActivity"/>
         <activity
             android:name=".buscadores.BuscarHabilidadActivity"
-            android:exported="true" />
+            android:exported="true"
+            android:parentActivityName=".menus.MenuBuscadorActivity"/>
         <activity
             android:name=".buscadores.BuscarTiposActivity"
-            android:exported="true" />
+            android:exported="true"
+            android:parentActivityName=".menus.MenuBuscadorActivity"/>
         <activity
             android:name=".menus.MenuPrincipalActivity"
-            android:exported="true">
+            android:exported="true"
+            android:theme="@style/Theme.Pokedexd.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -52,13 +61,16 @@
         </activity>
         <activity
             android:name=".menus.MenuBuscadorActivity"
-            android:exported="true" />
+            android:exported="true"
+            android:parentActivityName=".menus.MenuPrincipalActivity"/>
         <activity
             android:name=".buscadores.BuscarPokemonActivity"
-            android:exported="true" />
+            android:exported="true"
+            android:parentActivityName=".menus.MenuBuscadorActivity"/>
         <activity
             android:name=".equipos.MisEquiposActivity"
-            android:exported="true" />
+            android:exported="true"
+            android:parentActivityName=".menus.MenuPrincipalActivity"/>
         <activity
             android:name=".MainActivity"
             android:exported="true" />

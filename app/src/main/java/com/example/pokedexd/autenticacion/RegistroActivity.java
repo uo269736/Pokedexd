@@ -4,6 +4,8 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.PorterDuff;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -51,6 +53,15 @@ public class RegistroActivity extends AppCompatActivity {
         editTextNombre = (EditText) findViewById(R.id.editTextNombre);
         editTextEmail = (EditText) findViewById(R.id.editTextEmail);
         editTextPassword = (EditText) findViewById(R.id.editTextPassword);
+
+        //Boton para ir hacia atrás
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        final Drawable upArrow = getResources().getDrawable(R.drawable.ic_baseline_arrow_back_24);
+        upArrow.setColorFilter(getResources().getColor(R.color.black), PorterDuff.Mode.SRC_ATOP);
+        getSupportActionBar().setHomeAsUpIndicator(upArrow);
+        getSupportActionBar().setTitle("");
+        Drawable d=getResources().getDrawable(R.drawable.action_bar);
+        getSupportActionBar().setBackgroundDrawable(d);
 
         btnRegistro.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -65,5 +65,6 @@
     <string name="txEscogeTipo">Escoge un tipo:</string>
     <string name="btPerfil">Perfil</string>
     <string name="btnPerfil">Perfil</string>
+    <string name="btnVolver">Volver</string>
 
 </resources>

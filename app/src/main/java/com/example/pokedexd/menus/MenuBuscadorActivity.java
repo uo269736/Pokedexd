@@ -3,6 +3,9 @@ package com.example.pokedexd.menus;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.PorterDuff;
+import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -32,6 +35,16 @@ public class MenuBuscadorActivity extends AppCompatActivity {
         btnMenuBuscadorObjetos = (Button) findViewById(R.id.BuscadorBtnObjetos);
         btnMenuBuscadorAtaques = (Button) findViewById(R.id.BuscadorBtnAtaques);
         btnMenuBuscadorHabilidades = (Button) findViewById(R.id.BuscadorBtnHabilidades);
+
+        //Boton para ir hacia atrás
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        final Drawable upArrow = getResources().getDrawable(R.drawable.ic_baseline_arrow_back_24);
+        upArrow.setColorFilter(getResources().getColor(R.color.black), PorterDuff.Mode.SRC_ATOP);
+        getSupportActionBar().setHomeAsUpIndicator(upArrow);
+        getSupportActionBar().setTitle("");
+        Drawable d=getResources().getDrawable(R.drawable.action_bar);
+        getSupportActionBar().setBackgroundDrawable(d);
+
 
         //Pasar a las respectivas pantallas al clickar el boton.
         btnMenuBuscadorPokemon.setOnClickListener(new View.OnClickListener() {
