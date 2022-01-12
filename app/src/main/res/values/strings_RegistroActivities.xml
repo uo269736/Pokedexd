@@ -8,4 +8,5 @@
     <string name="HintContraseña">Contraseña</string>
     <string name="HintNombre">Nombre</string>
     <string name="CerrarSesion">Cerrar Sesión</string>
+    <string name="Editar">Editar</string>
 </resources>

@@ -77,19 +77,19 @@ public class CrearEquipoActivity extends AppCompatActivity {
         setContentView(R.layout.activity_crear_equipo);
 
         FirebaseDatabase database = FirebaseDatabase.getInstance("https://pokedexd-a8a61-default-rtdb.europe-west1.firebasedatabase.app/");
-        mDatabase     = database.getReference();
+        mDatabase            = database.getReference();
 
-        mAuth         = FirebaseAuth.getInstance();
+        mAuth                = FirebaseAuth.getInstance();
 
-        context = this;
+        context              = this;
 
-        equipoPokemon = new ArrayList<Pokemon>();
+        equipoPokemon        = new ArrayList<Pokemon>();
 
-        btnAddPokemon = (ImageButton) findViewById(R.id.CrearEquipoIbtAñade);
-        btnGuardar    = (Button) findViewById(R.id.CrearEquipoBtnGuardar);
-        btnExportar   = (Button) findViewById(R.id.CrearEquipoBtnExportar);
-        nombrePokemon = (EditText) findViewById(R.id.CrearEquipoEtxBuscaPokemon);
-        recyclerView  = (RecyclerView) findViewById(R.id.CrearEquipoRecListaEquipo);
+        btnAddPokemon        = (ImageButton) findViewById(R.id.CrearEquipoIbtAñade);
+        btnGuardar           = (Button) findViewById(R.id.CrearEquipoBtnGuardar);
+        btnExportar          = (Button) findViewById(R.id.CrearEquipoBtnExportar);
+        nombrePokemon        = (EditText) findViewById(R.id.CrearEquipoEtxBuscaPokemon);
+        recyclerView         = (RecyclerView) findViewById(R.id.CrearEquipoRecListaEquipo);
         editTextNombreEquipo = (EditText) findViewById(R.id.editTextNombreEquipo);
 
         //Boton para ir hacia atrás
@@ -103,17 +103,21 @@ public class CrearEquipoActivity extends AppCompatActivity {
 
         //Recoger variable del nombre del equipo en caso de que se quiera editar a para cargar sus pokemon.
         String nombreEquipo = getIntent().getStringExtra("nombreEquipo");
-        if (!nombreEquipo.isEmpty()) {
+        boolean isEdit      = getIntent().getBooleanExtra("isEdit", false);
+
+        if (nombreEquipo != null && !nombreEquipo.isEmpty()) {
             editTextNombreEquipo.setText(nombreEquipo);
             cargarEquipos(nombreEquipo);
         } else {
             equipoAdapter = new EquipoPokemonAdapter(this);
             recyclerView.setAdapter(equipoAdapter);
             recyclerView.setHasFixedSize(true);
-            GridLayoutManager layoutManager= new GridLayoutManager(this,1);
+            GridLayoutManager layoutManager = new GridLayoutManager(this,1);
             recyclerView.setLayoutManager(layoutManager);
         }
 
+        if (isEdit)
+            editTextNombreEquipo.setKeyListener(null);
 
         new ItemTouchHelper(itemTouchHelperCallback).attachToRecyclerView(recyclerView);
 
@@ -179,7 +183,7 @@ public class CrearEquipoActivity extends AppCompatActivity {
                                                                           isUniqueName = false;
                                                                       }
                                                                   }
-                                                                  if (isUniqueName) {
+                                                                  if (isUniqueName || isEdit) {
                                                                       Map<String, Object> map = new HashMap<>();
                                                                       for (int i = 0; i < equipoPokemon.size(); i++) {
                                                                           map.put("PokemonId", equipoPokemon.get(i).getId2());
@@ -197,7 +201,10 @@ public class CrearEquipoActivity extends AppCompatActivity {
                                                                               }
                                                                           });
                                                                       }
-                                                                      Toast.makeText(CrearEquipoActivity.this, "Equipo creado", Toast.LENGTH_SHORT).show();
+                                                                      if (!isEdit)
+                                                                          Toast.makeText(CrearEquipoActivity.this, "Equipo creado", Toast.LENGTH_SHORT).show();
+                                                                      else
+                                                                          Toast.makeText(CrearEquipoActivity.this, "Equipo editado", Toast.LENGTH_SHORT).show();
                                                                       Intent intent = new Intent(CrearEquipoActivity.this, MisEquiposActivity.class);
                                                                       startActivity(intent);
                                                                   } else {

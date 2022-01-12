@@ -15,7 +15,7 @@
         android:theme="@style/Theme.Pokedexd"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".ligas.ActivityAuxLigas"
+            android:name=".autenticacion.PerfilActivity"
             android:exported="true" />
         <activity
             android:name=".equipos.CrearEquipoActivity"
