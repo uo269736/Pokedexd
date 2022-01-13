@@ -15,7 +15,7 @@ import com.example.pokedexd.R;
 import java.text.Normalizer;
 import java.util.ArrayList;
 
-import models.Ataque;
+import com.example.pokedexd.models.Ataque;
 
 public class ListaAtaquesAdapter extends RecyclerView.Adapter<ListaAtaquesAdapter.ViewHolder>{
 

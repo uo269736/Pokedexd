@@ -1,4 +1,4 @@
-package models;
+package com.example.pokedexd.models;
 
 import java.util.ArrayList;
 

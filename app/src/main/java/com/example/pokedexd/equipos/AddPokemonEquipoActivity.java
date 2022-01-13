@@ -19,7 +19,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 
-import models.Pokemon;
+import com.example.pokedexd.models.Pokemon;
 
 public class AddPokemonEquipoActivity extends AppCompatActivity {
 

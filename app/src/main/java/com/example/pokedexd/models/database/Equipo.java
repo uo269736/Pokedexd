@@ -1,9 +1,9 @@
-package models.database;
+package com.example.pokedexd.models.database;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import models.Pokemon;
+import com.example.pokedexd.models.Pokemon;
 
 public class Equipo {
 

@@ -31,8 +31,8 @@ import java.util.Arrays;
 import java.util.List;
 
 import com.example.pokedexd.adapters.MisEquiposAdapter;
-import models.Pokemon;
-import models.database.Equipo;
+import com.example.pokedexd.models.Pokemon;
+import com.example.pokedexd.models.database.Equipo;
 
 public class MisEquiposActivity extends AppCompatActivity {
 

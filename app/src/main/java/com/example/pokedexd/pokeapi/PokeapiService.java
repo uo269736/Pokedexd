@@ -1,15 +1,15 @@
-package pokeapi;
+package com.example.pokedexd.pokeapi;
 
-import models.AtaqueRespuesta;
-import models.AtaqueRespuestaIndividual;
-import models.HabilidadRespuesta;
-import models.HabilidadRespuestaIndividual;
-import models.ObjetoRespuesta;
-import models.ObjetoRespuestaIndividual;
-import models.PokemonRespuesta;
-import models.PokemonRespuestaIndividual;
-import models.TipoRespuesta;
-import models.TipoRespuestaIndividual;
+import com.example.pokedexd.models.AtaqueRespuesta;
+import com.example.pokedexd.models.AtaqueRespuestaIndividual;
+import com.example.pokedexd.models.HabilidadRespuesta;
+import com.example.pokedexd.models.HabilidadRespuestaIndividual;
+import com.example.pokedexd.models.ObjetoRespuesta;
+import com.example.pokedexd.models.ObjetoRespuestaIndividual;
+import com.example.pokedexd.models.PokemonRespuesta;
+import com.example.pokedexd.models.PokemonRespuestaIndividual;
+import com.example.pokedexd.models.TipoRespuesta;
+import com.example.pokedexd.models.TipoRespuestaIndividual;
 import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Path;

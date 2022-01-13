@@ -20,10 +20,10 @@ import com.google.android.material.snackbar.Snackbar;
 import java.util.ArrayList;
 
 import com.example.pokedexd.adapters.ListaPokemonAdapter;
-import models.Pokemon;
-import models.PokemonRespuesta;
-import models.PokemonRespuestaIndividual;
-import pokeapi.PokeapiService;
+import com.example.pokedexd.models.Pokemon;
+import com.example.pokedexd.models.PokemonRespuesta;
+import com.example.pokedexd.models.PokemonRespuestaIndividual;
+import com.example.pokedexd.pokeapi.PokeapiService;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;

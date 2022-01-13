@@ -1,6 +1,6 @@
-package models;
+package com.example.pokedexd.models;
 
-public class Habilidad {
+public class Objeto {
 
     private int id;
     private String name;
@@ -16,7 +16,7 @@ public class Habilidad {
         return url;
     }
 
-    public Habilidad (String name, String url){
+    public Objeto (String name, String url){
         this.name=name;
         this.url=url;
     }

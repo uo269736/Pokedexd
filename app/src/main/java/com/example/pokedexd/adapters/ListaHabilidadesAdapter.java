@@ -13,7 +13,7 @@ import com.example.pokedexd.R;
 
 import java.util.ArrayList;
 
-import models.Habilidad;
+import com.example.pokedexd.models.Habilidad;
 
 public class ListaHabilidadesAdapter extends RecyclerView.Adapter<ListaHabilidadesAdapter.ViewHolder> {
 

@@ -38,9 +38,9 @@ import java.util.List;
 import java.util.Map;
 
 import com.example.pokedexd.adapters.EquipoPokemonAdapter;
-import models.Pokemon;
-import models.PokemonRespuestaIndividual;
-import pokeapi.PokeapiService;
+import com.example.pokedexd.models.Pokemon;
+import com.example.pokedexd.models.PokemonRespuestaIndividual;
+import com.example.pokedexd.pokeapi.PokeapiService;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;

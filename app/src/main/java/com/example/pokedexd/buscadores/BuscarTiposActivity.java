@@ -28,11 +28,11 @@ import java.util.List;
 
 import com.example.pokedexd.adapters.ListaTiposAdapter;
 
-import models.Relacion;
-import models.Tipo;
-import models.TipoRespuesta;
-import models.TipoRespuestaIndividual;
-import pokeapi.PokeapiService;
+import com.example.pokedexd.models.Relacion;
+import com.example.pokedexd.models.Tipo;
+import com.example.pokedexd.models.TipoRespuesta;
+import com.example.pokedexd.models.TipoRespuestaIndividual;
+import com.example.pokedexd.pokeapi.PokeapiService;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;

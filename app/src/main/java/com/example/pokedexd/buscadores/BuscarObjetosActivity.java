@@ -24,12 +24,12 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 
 import com.example.pokedexd.adapters.ListaObjetosAdapter;
-import models.DescripcionO;
-import models.Nombre;
-import models.Objeto;
-import models.ObjetoRespuesta;
-import models.ObjetoRespuestaIndividual;
-import pokeapi.PokeapiService;
+import com.example.pokedexd.models.DescripcionO;
+import com.example.pokedexd.models.Nombre;
+import com.example.pokedexd.models.Objeto;
+import com.example.pokedexd.models.ObjetoRespuesta;
+import com.example.pokedexd.models.ObjetoRespuestaIndividual;
+import com.example.pokedexd.pokeapi.PokeapiService;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;

@@ -16,7 +16,7 @@ import com.example.pokedexd.R;
 
 import java.util.ArrayList;
 
-import models.Pokemon;
+import com.example.pokedexd.models.Pokemon;
 
 public class ListaPokemonAdapter extends RecyclerView.Adapter<ListaPokemonAdapter.ViewHolder> {
 

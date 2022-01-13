@@ -23,13 +23,13 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 
 import com.example.pokedexd.adapters.ListaAtaquesAdapter;
-import models.Ataque;
-import models.AtaqueRespuesta;
-import models.AtaqueRespuestaIndividual;
-import models.DescripcionA;
+import com.example.pokedexd.models.Ataque;
+import com.example.pokedexd.models.AtaqueRespuesta;
+import com.example.pokedexd.models.AtaqueRespuestaIndividual;
+import com.example.pokedexd.models.DescripcionA;
 
-import models.Nombre;
-import pokeapi.PokeapiService;
+import com.example.pokedexd.models.Nombre;
+import com.example.pokedexd.pokeapi.PokeapiService;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;

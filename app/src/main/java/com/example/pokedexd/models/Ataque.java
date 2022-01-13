@@ -1,4 +1,4 @@
-package models;
+package com.example.pokedexd.models;
 
 public class Ataque {
 

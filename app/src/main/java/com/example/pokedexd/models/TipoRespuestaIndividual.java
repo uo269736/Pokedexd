@@ -1,8 +1,4 @@
-package models;
-
-import android.provider.ContactsContract;
-
-import java.util.ArrayList;
+package com.example.pokedexd.models;
 
 public class TipoRespuestaIndividual {
 

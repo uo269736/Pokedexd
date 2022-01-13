@@ -24,12 +24,12 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 
 import com.example.pokedexd.adapters.ListaHabilidadesAdapter;
-import models.DescripcionH;
-import models.Habilidad;
-import models.HabilidadRespuesta;
-import models.HabilidadRespuestaIndividual;
-import models.Nombre;
-import pokeapi.PokeapiService;
+import com.example.pokedexd.models.DescripcionH;
+import com.example.pokedexd.models.Habilidad;
+import com.example.pokedexd.models.HabilidadRespuesta;
+import com.example.pokedexd.models.HabilidadRespuestaIndividual;
+import com.example.pokedexd.models.Nombre;
+import com.example.pokedexd.pokeapi.PokeapiService;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;

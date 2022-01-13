@@ -20,8 +20,8 @@ import com.example.pokedexd.equipos.CrearEquipoActivity;
 import java.util.ArrayList;
 import java.util.List;
 
-import models.Pokemon;
-import models.database.Equipo;
+import com.example.pokedexd.models.Pokemon;
+import com.example.pokedexd.models.database.Equipo;
 
 public class MisEquiposAdapter extends RecyclerView.Adapter<MisEquiposAdapter.ViewHolder> {
 
