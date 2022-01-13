@@ -23,6 +23,10 @@ import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.pokedexd.R;
+import com.example.pokedexd.adapters.EquipoPokemonAdapter;
+import com.example.pokedexd.models.Pokemon;
+import com.example.pokedexd.models.PokemonRespuestaIndividual;
+import com.example.pokedexd.pokeapi.PokeapiService;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.snackbar.Snackbar;
@@ -37,10 +41,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import com.example.pokedexd.adapters.EquipoPokemonAdapter;
-import com.example.pokedexd.models.Pokemon;
-import com.example.pokedexd.models.PokemonRespuestaIndividual;
-import com.example.pokedexd.pokeapi.PokeapiService;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -66,7 +66,7 @@ public class CrearEquipoActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private EquipoPokemonAdapter equipoAdapter;
     private EditText editTextNombreEquipo;
-
+    private boolean isEdit;
     private int idPokemon;
 
     private Context context;
@@ -104,12 +104,12 @@ public class CrearEquipoActivity extends AppCompatActivity {
         upArrow.setColorFilter(getResources().getColor(R.color.black), PorterDuff.Mode.SRC_ATOP);
         getSupportActionBar().setHomeAsUpIndicator(upArrow);
         getSupportActionBar().setTitle("");
-        Drawable d=getResources().getDrawable(R.drawable.action_bar);
+        Drawable d =getResources().getDrawable(R.drawable.action_bar);
         getSupportActionBar().setBackgroundDrawable(d);
 
         //Recoger variable del nombre del equipo en caso de que se quiera editar a para cargar sus pokemon.
         String nombreEquipo = getIntent().getStringExtra("nombreEquipo");
-        boolean isEdit      = getIntent().getBooleanExtra("isEdit", false);
+        isEdit      = getIntent().getBooleanExtra("isEdit", false);
 
         if (nombreEquipo != null && !nombreEquipo.isEmpty()) {
             editTextNombreEquipo.setText(nombreEquipo);
@@ -343,8 +343,17 @@ public class CrearEquipoActivity extends AppCompatActivity {
     };
 
     private void eliminarPokemon(Pokemon pokemon){
-        equipoPokemon.remove(pokemon);
-        equipoAdapter.eliminarPokemon(pokemon);
+        String uid = mAuth.getCurrentUser().getUid();
+        mDatabase.child("users").child(uid).child("Equipos").child(editTextNombreEquipo.getText().toString()).child(pokemon.getName()).removeValue().addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                if (task.isSuccessful() && isEdit) {
+                    Log.d("d","Se ha eliminado el pokemon " + pokemon.getName() + " correctamente.");
+                    equipoPokemon.remove(pokemon);
+                    equipoAdapter.eliminarPokemon(pokemon);
+                } else
+                    Log.d("d","No se ha podido eliminar de la database el pokemon " + pokemon.getName() + " correctamente.");
+            }
+        });
     }
-
 }
