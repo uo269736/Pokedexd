@@ -138,7 +138,6 @@
                 android:paddingBottom="2dp"
                 android:text="@string/HintContraseña"
                 android:textAllCaps="true"
-                android:inputType="textPassword"
                 android:textColor="@color/white"
                 android:textSize="20sp" />
 
@@ -161,6 +160,7 @@
                 android:color="@color/white"
                 android:fontFamily="@font/baloo"
                 android:hint="@string/HintContraseña"
+                android:inputType="textPassword"
                 android:textColor="@color/white"
                 android:textColorHint="@color/white" />
 

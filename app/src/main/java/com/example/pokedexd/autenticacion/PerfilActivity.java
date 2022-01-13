@@ -36,7 +36,6 @@ public class PerfilActivity extends AppCompatActivity {
     private Button   btnCerrarSesion;
     private Button   btnEditar;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -76,7 +75,7 @@ public class PerfilActivity extends AppCompatActivity {
                     String email    = String.valueOf(user.getEmail());
                     correo.setText(email);
                     nombre.setText(username);
-                    nombreBienvenida.setText("Bienvenido " + username + "!");
+                    nombreBienvenida.setText("¡Bienvenido " + username + "!");
                 } else {
                     Toast.makeText(PerfilActivity.this,"No se ha podido cargar el perfil.", Toast.LENGTH_SHORT).show();
                 }
@@ -93,15 +92,11 @@ public class PerfilActivity extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         if (task.isSuccessful()) {
-                            if (nombre.getText().toString().equals(username))
-                                Toast.makeText(PerfilActivity.this,"El nombre es el mismo que el actual.", Toast.LENGTH_SHORT).show();
-                            else {
-                                Toast.makeText(PerfilActivity.this, "Se ha editado el nombre de usuario correctamente.", Toast.LENGTH_SHORT).show();
-                                finish();
-                                overridePendingTransition(0, 0);
-                                startActivity(getIntent());
-                                overridePendingTransition(0, 0);
-                            }
+                            Toast.makeText(PerfilActivity.this, "Se ha editado el nombre de usuario correctamente.", Toast.LENGTH_SHORT).show();
+                            finish();
+                            overridePendingTransition(0, 0);
+                            startActivity(getIntent());
+                            overridePendingTransition(0, 0);
                         } else
                             Toast.makeText(PerfilActivity.this,"No se ha podido editar el nombre de usuario.", Toast.LENGTH_SHORT).show();
                     }
