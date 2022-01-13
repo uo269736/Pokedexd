@@ -25,10 +25,9 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
 
-import adapters.ListaTiposAdapter;
-import models.PokemonRespuesta;
+import com.example.pokedexd.adapters.ListaTiposAdapter;
+
 import models.Relacion;
 import models.Tipo;
 import models.TipoRespuesta;

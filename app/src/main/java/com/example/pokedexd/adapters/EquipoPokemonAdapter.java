@@ -1,10 +1,9 @@
-package adapters;
+package com.example.pokedexd.adapters;
 
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -18,7 +17,6 @@ import com.example.pokedexd.R;
 import java.util.ArrayList;
 
 import models.Pokemon;
-import models.database.Equipo;
 
 public class EquipoPokemonAdapter extends RecyclerView.Adapter<EquipoPokemonAdapter.ViewHolder> {
 

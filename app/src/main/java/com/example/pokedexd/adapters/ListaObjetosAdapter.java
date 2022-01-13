@@ -1,4 +1,4 @@
-package adapters;
+package com.example.pokedexd.adapters;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -12,11 +12,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
-import com.bumptech.glide.request.RequestOptions;
 import com.example.pokedexd.R;
 
 import java.util.ArrayList;
-import java.util.Locale;
 
 import models.Objeto;
 

@@ -1,6 +1,8 @@
 package com.example.pokedexd.autenticacion;
 
 import android.content.Intent;
+import android.graphics.PorterDuff;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -55,6 +57,15 @@ public class PerfilActivity extends AppCompatActivity {
 
         //No se puede editar este campo
         correo.setKeyListener(null);
+
+        //Boton para ir hacia atrás
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        final Drawable upArrow = getResources().getDrawable(R.drawable.ic_baseline_arrow_back_24);
+        upArrow.setColorFilter(getResources().getColor(R.color.black), PorterDuff.Mode.SRC_ATOP);
+        getSupportActionBar().setHomeAsUpIndicator(upArrow);
+        getSupportActionBar().setTitle("");
+        Drawable d=getResources().getDrawable(R.drawable.action_bar);
+        getSupportActionBar().setBackgroundDrawable(d);
 
         mDatabase.child("users").child(uid).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
             @Override

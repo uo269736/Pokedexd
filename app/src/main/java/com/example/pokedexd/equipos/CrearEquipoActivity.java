@@ -37,7 +37,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import adapters.EquipoPokemonAdapter;
+import com.example.pokedexd.adapters.EquipoPokemonAdapter;
 import models.Pokemon;
 import models.PokemonRespuestaIndividual;
 import pokeapi.PokeapiService;
@@ -70,6 +70,12 @@ public class CrearEquipoActivity extends AppCompatActivity {
     private int idPokemon;
 
     private Context context;
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        btnAddPokemon.setEnabled(true);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -143,7 +149,7 @@ public class CrearEquipoActivity extends AppCompatActivity {
                                  intent.putExtra(NOMBRE_POKEMON, nombrePokemon.getText().toString().toLowerCase());
                                  startActivityForResult(intent, AÑADIR_POKEMON);
                              } else {
-                                 Snackbar.make(findViewById(R.id.CrearEquipo), +R.string.msg_pokemon_no_encontrado, Snackbar.LENGTH_SHORT).show();
+                                 Snackbar.make(findViewById(R.id.CrearEquipo), R.string.msg_pokemon_no_encontrado, Snackbar.LENGTH_SHORT).show();
                                  btnAddPokemon.setEnabled(true);
                              }
                          }

@@ -30,7 +30,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import adapters.MisEquiposAdapter;
+import com.example.pokedexd.adapters.MisEquiposAdapter;
 import models.Pokemon;
 import models.database.Equipo;
 

@@ -23,9 +23,8 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 
-import adapters.ListaHabilidadesAdapter;
+import com.example.pokedexd.adapters.ListaHabilidadesAdapter;
 import models.DescripcionH;
-import models.DescripcionO;
 import models.Habilidad;
 import models.HabilidadRespuesta;
 import models.HabilidadRespuestaIndividual;

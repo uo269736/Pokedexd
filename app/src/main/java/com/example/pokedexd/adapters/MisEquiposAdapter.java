@@ -1,4 +1,4 @@
-package adapters;
+package com.example.pokedexd.adapters;
 
 import android.content.Context;
 import android.content.Intent;

@@ -23,7 +23,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 
-import adapters.ListaObjetosAdapter;
+import com.example.pokedexd.adapters.ListaObjetosAdapter;
 import models.DescripcionO;
 import models.Nombre;
 import models.Objeto;

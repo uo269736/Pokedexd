@@ -13,7 +13,7 @@
 
     <!-- botones pa cambiar de fragment -->
     <string name="btEficaz">Eficaz</string>
-    <string name="btDebil">Débil</string>
+    <string name="btDebil">Poco eficaz</string>
     <string name="btInmune">No afecta a</string>
     <string name="btx0">x0</string>
     <string name="btx2">x0</string>

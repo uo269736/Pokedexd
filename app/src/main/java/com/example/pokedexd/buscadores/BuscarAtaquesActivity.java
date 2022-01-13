@@ -22,13 +22,12 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 
-import adapters.ListaAtaquesAdapter;
+import com.example.pokedexd.adapters.ListaAtaquesAdapter;
 import models.Ataque;
 import models.AtaqueRespuesta;
 import models.AtaqueRespuestaIndividual;
 import models.DescripcionA;
 
-import models.DescripcionH;
 import models.Nombre;
 import pokeapi.PokeapiService;
 import retrofit2.Call;

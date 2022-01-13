@@ -16,7 +16,8 @@
         android:usesCleartextTraffic="true">
         <activity
             android:name=".autenticacion.PerfilActivity"
-            android:exported="true" />
+            android:exported="true"
+            android:parentActivityName=".menus.MenuPrincipalActivity"/>
         <activity
             android:name=".equipos.CrearEquipoActivity"
             android:exported="true"
@@ -71,9 +72,6 @@
             android:name=".equipos.MisEquiposActivity"
             android:exported="true"
             android:parentActivityName=".menus.MenuPrincipalActivity"/>
-        <activity
-            android:name=".MainActivity"
-            android:exported="true" />
 
         <meta-data
             android:name="preloaded_fonts"

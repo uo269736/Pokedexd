@@ -18,9 +18,8 @@ import com.example.pokedexd.R;
 import com.google.android.material.snackbar.Snackbar;
 
 import java.util.ArrayList;
-import java.util.Locale;
 
-import adapters.ListaPokemonAdapter;
+import com.example.pokedexd.adapters.ListaPokemonAdapter;
 import models.Pokemon;
 import models.PokemonRespuesta;
 import models.PokemonRespuestaIndividual;
@@ -157,6 +156,7 @@ public class BuscarPokemonActivity extends AppCompatActivity {
                             ArrayList<Pokemon> listaPokemon = new ArrayList<>();
                             listaPokemon.add(new Pokemon(pokemonRespuestaIndividual.getName(), "https://pokeapi.co/api/v2/pokemon/" + pokemonRespuestaIndividual.getId()));
                             listaPokemonAdapter.addPokemon(listaPokemon);
+                            aptoParaCargar =false;
                     }
                 } else {
                     Log.e(TAG, "onResponse: " + response.errorBody());
